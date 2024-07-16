@@ -1,0 +1,44 @@
+.DkpsTable {
+  /* padding: 0px 50px; */
+}
+
+.header {
+  height: 50px;
+  /* padding: 0px 50px; */
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid red;
+}
+
+.header h1 {
+  font-size: 25px;
+  width: 200px;
+}
+
+.header button {
+  /* background: none; */
+  padding: 0px;
+}
+
+.all-players {
+  display: flex;
+  flex-direction: column;
+}
+
+.player {
+  display: flex;
+  justify-content: space-between;
+  /* background: #86868623; */
+}
+
+.player h1 {
+  font-size: 18px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  width: 200px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
