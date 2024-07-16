@@ -34,3 +34,15 @@ export const orderFunction = (array) => {
   const newORder = array.sort((a, b) => a.name.localeCompare(b.name))
   return newORder
 }
+
+// se encesita usar VITE en la variable de entorno
+const BACK_END = import.meta.env.VITE_LOCAL
+console.log(BACK_END)
+
+let API_BACK
+if (BACK_END) {
+  API_BACK = 'http://192.168.18.20:3001'
+} else {
+  API_BACK = import.meta.env.VITE_API
+}
+export const API = API_BACK

@@ -1,18 +1,25 @@
-import { useEffect, useState } from 'react'
-import { selectColor, header, rankPriority } from './DkpsTable.service'
+import { useEffect, useState, useRef } from 'react'
+import { selectColor, header, rankPriority, API } from './DkpsTable.service'
 import './DkpsTable.css'
-
-// const header = ['Personaje', 'Clase', 'Rango', 'Dkps']
+import SearchPlayer from '../../../components/search/SearchPlayer'
 
 const DkpsTable = () => {
   const [jsonData, setJsonData] = useState([])
+  const [renderData, setRenderData] = useState([])
+  const [loader, setLoader] = useState(false)
+  const [greenColor, setGreenColor] = useState('')
+  const playerRefs = useRef({})
 
   useEffect(() => {
-    fetch('https://grimreaper-back.onrender.com/main')
+    setLoader(true)
+    fetch(`${API}/main`)
       .then((res) => res.json())
       .then((result) => {
-        console.log(result)
-        setJsonData(result.response)
+        const newORder = [...result.response]
+        newORder.sort((a, b) => a.name.localeCompare(b.name))
+        setLoader(false)
+        setJsonData(newORder)
+        setRenderData(newORder)
       })
       .catch((err) => console.error('Error fetching data:', err))
   }, [])
@@ -45,7 +52,6 @@ const DkpsTable = () => {
     for (let ele in classMap) {
       array.push(classMap[ele].sort((a, b) => a.name.localeCompare(b.name)))
     }
-    // "bject.values()" devuelve un array de arrays y ".flat()" aplana un array de arrays en uno solo
     const newOrder = array.flat()
     return newOrder
   }
@@ -54,7 +60,6 @@ const DkpsTable = () => {
   const nameOrder = () => {
     const order = [...jsonData]
     const newORder = order.sort((a, b) => a.name.localeCompare(b.name))
-    console.log(newORder)
     return newORder
   }
 
@@ -63,7 +68,6 @@ const DkpsTable = () => {
     const newORder = classOrder().sort(
       (a, b) => rankPriority[a.rank] - rankPriority[b.rank]
     )
-    console.log(newORder)
     return newORder
   }
 
@@ -78,18 +82,31 @@ const DkpsTable = () => {
     e.preventDefault()
     const buttonId = e.target.id || e.target.parentElement.id
     if (buttonId === 'Clase') {
-      setJsonData(classOrder())
+      setRenderData(classOrder())
     } else if (buttonId === 'Personaje') {
-      setJsonData(nameOrder())
+      setRenderData(nameOrder())
     } else if (buttonId === 'Rango') {
-      setJsonData(rankOrder())
+      setRenderData(rankOrder())
     } else if (buttonId === 'Dkps') {
-      setJsonData(dkpsOrder())
+      setRenderData(dkpsOrder())
     }
+  }
+
+  const scrollToPlayer = (name) => {
+    setGreenColor(name)
+    playerRefs.current[name]?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    })
   }
 
   return (
     <div className='DkpsTable'>
+      <SearchPlayer
+        players={jsonData}
+        onPlayerClick={scrollToPlayer}
+        setRenderData={setRenderData}
+      />
       <div className='header'>
         {header.map((ele, i) => {
           return (
@@ -99,22 +116,36 @@ const DkpsTable = () => {
           )
         })}
       </div>
-      <div className='all-players'>
-        {jsonData.map((ele, i) => {
-          return (
-            <div
-              style={{ backgroundColor: i % 2 !== 0 && '#86868623' }}
-              className='player'
-              key={i}
-            >
-              <h1 style={{ color: selectColor(ele.class, ele) }}>{ele.name}</h1>
-              <h1 style={{ color: selectColor(ele.class) }}>{ele.class}</h1>
-              <h1 style={{ color: selectColor(ele.class) }}>{ele.rank}</h1>
-              <h1 style={{ color: selectColor(ele.class) }}>{ele.net}</h1>
-            </div>
-          )
-        })}
-      </div>
+      {loader ? (
+        <div className='loader-container'>
+          <span className='loader'></span>
+        </div>
+      ) : (
+        <div className='all-players'>
+          {renderData.map((ele, i) => {
+            return (
+              <div
+                ref={(el) => (playerRefs.current[ele.name] = el)}
+                style={{
+                  backgroundColor:
+                    (greenColor === ele.name && '#008104') ||
+                    (i % 2 !== 0 && '#86868623')
+                }}
+                className='player'
+                key={i}
+                id={ele.name}
+              >
+                <h1 style={{ color: selectColor(ele.class, ele) }}>
+                  {ele.name}
+                </h1>
+                <h1 style={{ color: selectColor(ele.class) }}>{ele.class}</h1>
+                <h1 style={{ color: selectColor(ele.class) }}>{ele.rank}</h1>
+                <h1 style={{ color: selectColor(ele.class) }}>{ele.net}</h1>
+              </div>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

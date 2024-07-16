@@ -1,4 +1,4 @@
-import AddDkp from './AddDKP/AddDkp'
+import AddDkp from '../../components/AddDKP/AddDkp'
 import DkpsTable from './DkpsTable/DkpsTable'
 import './Home.css'
 

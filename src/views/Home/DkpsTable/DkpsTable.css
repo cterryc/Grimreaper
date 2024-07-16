@@ -1,6 +1,9 @@
-/* .DkpsTable { */
-/* padding: 0px 50px; */
-/* } */
+/* .DkpsTable {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+} */
 
 .header {
   height: 50px;
@@ -41,4 +44,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Loader Config */
+.loader-container {
+  height: 15vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  display: block;
+  position: relative;
+  height: 18px;
+  width: 80%;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.loader:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background: #ff3d00;
+  animation: 30s prog ease-in infinite;
+}
+
+@keyframes prog {
+  to {
+    width: 100%;
+  }
 }
