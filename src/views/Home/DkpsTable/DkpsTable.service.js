@@ -44,5 +44,6 @@ if (BACK_END) {
   API_BACK = 'http://192.168.18.20:3001'
 } else {
   API_BACK = import.meta.env.VITE_API
+  console.log(API_BACK)
 }
 export const API = API_BACK
