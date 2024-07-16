@@ -33,7 +33,8 @@ const SearchPlayer = ({ players, onPlayerClick, setRenderData }) => {
     const resultado = players.filter((ele) =>
       ele.name.startsWith(primeraLetra + restoDelInput)
     )
-    console.log(resultado)
+    setInputValue('')
+    setFound([])
     setRenderData(resultado)
   }
 

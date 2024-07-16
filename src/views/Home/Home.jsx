@@ -2,11 +2,11 @@ import AddDkp from '../../components/AddDKP/AddDkp'
 import DkpsTable from './DkpsTable/DkpsTable'
 import './Home.css'
 
-const Home = () => {
+const Home = ({ showAddDKP }) => {
   return (
     <div className='Home'>
       <DkpsTable />
-      <AddDkp />
+      {showAddDKP && <AddDkp />}
     </div>
   )
 }

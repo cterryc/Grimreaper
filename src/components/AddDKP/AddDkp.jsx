@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API } from '../../views/Home/DkpsTable/DkpsTable.service'
 
 const AddDkp = () => {
   const [xmlData, setXmlData] = useState('')
@@ -13,16 +14,13 @@ const AddDkp = () => {
     e.preventDefault()
     console.log('esto es XML ==>', typeof xmlData)
     try {
-      const response = await fetch(
-        'https://grimreaper-back.onrender.com/dkps',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ body: xmlData })
-        }
-      )
+      const response = await fetch(`${API}/dkps`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ body: xmlData })
+      })
       const result = await response.json()
       setJsonData(result)
     } catch (error) {
