@@ -8,7 +8,7 @@ const DkpsTable = () => {
   const [jsonData, setJsonData] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3001/main')
+    fetch('https://grimreaper-back.onrender.com/main')
       .then((res) => res.json())
       .then((result) => {
         console.log(result)
