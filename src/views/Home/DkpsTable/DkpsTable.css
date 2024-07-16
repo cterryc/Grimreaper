@@ -1,6 +1,6 @@
-.DkpsTable {
-  /* padding: 0px 50px; */
-}
+/* .DkpsTable { */
+/* padding: 0px 50px; */
+/* } */
 
 .header {
   height: 50px;
@@ -34,10 +34,10 @@
 }
 
 .player h1 {
-  font-size: 18px;
+  font-size: 16px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   width: 200px;
-  height: 30px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;

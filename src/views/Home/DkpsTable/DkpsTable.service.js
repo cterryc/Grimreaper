@@ -7,6 +7,7 @@ export const colorsClass = [
   { color: '#FF7C0A', class: 'Druida' },
   { color: '#C69B6D', class: 'Guerrero' },
   { color: '#3FC7EB', class: 'Mago' },
+  { color: '#3FC7EB', class: 'Maga' },
   { color: '#F48CBA', class: 'Paladín' },
   { color: '#FFF468', class: 'Pícaro' },
   { color: '#FFFFFF', class: 'Sacerdote' }
