@@ -1,5 +1,10 @@
 .login {
   height: 100%;
+  width: 100%;
+  background-image: url('/src/assets/651986.jpg');
+  background-position: center center;
+  /* background-repeat: no-repeat; */
+  background-size: cover;
 
   display: flex;
   align-items: center;
@@ -7,7 +12,7 @@
 }
 
 .login-form {
-  background-color: rgba(0, 0, 0, 0.466);
+  background-color: rgba(56, 56, 56, 0.678);
   padding: 30px 20px;
   border-radius: 10px;
 }

@@ -28,6 +28,8 @@
 .all-players {
   display: flex;
   flex-direction: column;
+
+  padding-bottom: 30px;
 }
 
 .player {

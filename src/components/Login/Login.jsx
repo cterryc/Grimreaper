@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { API } from '../../views/Home/DkpsTable/DkpsTable.service'
 import './Login.css'
 import { useNavigate } from 'react-router'
+import { objectPost } from '../../helpers/objetPost'
+// import { useDispatch } from 'react-redux'
 
 const Login = ({ setShowAddDkp }) => {
   const [inputValue, setInputValue] = useState({
@@ -9,15 +11,11 @@ const Login = ({ setShowAddDkp }) => {
     password: ''
   })
   const navigate = useNavigate()
+  // const dispatch = useDispatch()
+
   const onSubmitForm = async (e) => {
     e.preventDefault()
-    const response = await fetch(`${API}/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(inputValue)
-    })
+    const response = await fetch(`${API}/login`, objectPost(inputValue))
     const result = await response.json()
     if (result.response) {
       setShowAddDkp(result.response)

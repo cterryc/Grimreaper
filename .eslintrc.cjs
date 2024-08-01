@@ -19,6 +19,7 @@ module.exports = {
     ],
     'jsx-quotes': ['error', 'prefer-single'],
     semi: ['error', 'never'],
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }]
   }
 }
