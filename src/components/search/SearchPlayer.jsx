@@ -1,7 +1,13 @@
 import { useState } from 'react'
 import './SearchPlayer.css'
 
-const SearchPlayer = ({ players, onPlayerClick, setRenderData }) => {
+const SearchPlayer = ({
+  players,
+  onPlayerClick,
+  setRenderData,
+  showAddDKP,
+  setButtonShowAddDkp
+}) => {
   const [found, setFound] = useState([])
   const [inputValue, setInputValue] = useState('')
   const [colorH1, setColorH1] = useState({})
@@ -71,6 +77,19 @@ const SearchPlayer = ({ players, onPlayerClick, setRenderData }) => {
         </div>
         <button type='submit'>Buscar</button>
       </form>
+      {showAddDKP && (
+        <div className='button-add-dkp-container'>
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              setButtonShowAddDkp(true)
+            }}
+            className='button-add-dkp'
+          >
+            Add Dkp
+          </button>
+        </div>
+      )}
     </div>
   )
 }

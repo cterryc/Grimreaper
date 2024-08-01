@@ -1,0 +1,158 @@
+.AddDkp {
+  position: absolute;
+  top: 0px;
+  height: 90vh;
+  width: 100%;
+  max-width: 1000px;
+  /* background-color: rgba(121, 121, 121, 0.87); */
+  margin-top: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-dkp-form {
+  width: 800px;
+  height: 80vh;
+  padding: 40px;
+  background-color: rgba(121, 121, 121, 0.87);
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-dkp-textarea {
+  background-color: rgba(0, 0, 0, 0.87);
+  padding: 20px;
+  height: 100%;
+  border-radius: 20px;
+  resize: none;
+}
+
+.add-dkp-textarea:focus {
+  outline: 0px;
+}
+
+.addDkp-button {
+  border: 0px;
+  font-size: 20px;
+  height: 50px;
+  padding: 0px;
+  /* outline: none; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addDkp-button:hover {
+  background: rgb(100, 8, 8);
+}
+
+.addDkp-button:focus {
+  outline: none;
+}
+
+.addDkp-button-loader {
+  border: 0px;
+  font-size: 20px;
+  height: 50px;
+  padding: 0px;
+  outline: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* pointer-events: none; */
+  cursor: wait;
+}
+
+.addDkp-button-loader:hover {
+  /* pointer-events: none; */
+}
+
+.addDkp-button-loader:focus {
+  outline: none;
+}
+
+/* ! Loader */
+.addDkp-loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 32px 0 #fff, -32px 0 #fff;
+  position: relative;
+  animation: flash 0.5s ease-out infinite alternate;
+}
+
+@keyframes flash {
+  0% {
+    background-color: #fff2;
+    box-shadow: 32px 0 #fff2, -32px 0 #fff;
+  }
+  50% {
+    background-color: #fff;
+    box-shadow: 32px 0 #fff2, -32px 0 #fff2;
+  }
+  100% {
+    background-color: #fff2;
+    box-shadow: 32px 0 #fff, -32px 0 #fff2;
+  }
+}
+
+.addDkp-closed-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 30px;
+  width: 30px;
+  /* background-color: rgb(165, 0, 0); */
+  border: 0px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addDkp-closed-button:hover {
+  /* background-color: rgb(255, 0, 0); */
+  border: 0px;
+}
+
+.addDkp-closed-button:focus {
+  outline: 0px;
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: #a10000;
+  transition: 0.2s ease-in-out;
+}
+.arrow .line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 4px;
+  border-radius: 2px;
+  background: #ffffff;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.arrow .line:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.arrow:hover {
+  transform: rotate(45deg);
+}
+
+.arrow:active {
+  background-color: rgb(116, 0, 145);
+}

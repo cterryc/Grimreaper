@@ -20,12 +20,41 @@
   }
 }
 
-.App {
+/* .App {
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+  background-image: url('./assets/651986.jpg');
+  background-position: center center;
+  background-size: cover;
 
   display: flex;
   align-items: center;
   flex-direction: column;
+} */
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  /* position: relative; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.App::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./assets/651986.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 0.5; /* Ajusta este valor para cambiar la transparencia */
+  z-index: -1;
+  overflow-x: hidden;
 }

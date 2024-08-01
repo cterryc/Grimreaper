@@ -3,7 +3,7 @@ import { selectColor, header, rankPriority, API } from './DkpsTable.service'
 import './DkpsTable.css'
 import SearchPlayer from '../../../components/search/SearchPlayer'
 
-const DkpsTable = () => {
+const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   const [jsonData, setJsonData] = useState([])
   const [renderData, setRenderData] = useState([])
   const [loader, setLoader] = useState(false)
@@ -103,6 +103,8 @@ const DkpsTable = () => {
   return (
     <div className='DkpsTable'>
       <SearchPlayer
+        setButtonShowAddDkp={setButtonShowAddDkp}
+        showAddDKP={showAddDKP}
         players={jsonData}
         onPlayerClick={scrollToPlayer}
         setRenderData={setRenderData}
