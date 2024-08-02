@@ -1,7 +1,10 @@
 import { useEffect, useState, useRef } from 'react'
-import { selectColor, header, rankPriority, API } from './DkpsTable.service'
+import { header, rankPriority, API } from './DkpsTable.service'
 import './DkpsTable.css'
 import SearchPlayer from '../../../components/search/SearchPlayer'
+import RowPlayer from './RowPlayer/RowPlayer'
+import { useDispatch, useSelector } from 'react-redux'
+import { addAlters, addMains } from '../../../redux/slice/playerSlice'
 
 const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   const [jsonData, setJsonData] = useState([])
@@ -9,20 +12,28 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   const [loader, setLoader] = useState(false)
   const [greenColor, setGreenColor] = useState('')
   const playerRefs = useRef({})
+  const [showAlters, setShowAlters] = useState(false)
+  const dispatch = useDispatch()
+  const state = useSelector((state) => state)
+  console.log(state)
 
   useEffect(() => {
     setLoader(true)
     fetch(`${API}/main`)
       .then((res) => res.json())
       .then((result) => {
-        const newORder = [...result.response]
-        newORder.sort((a, b) => a.name.localeCompare(b.name))
+        const newORderMain = [...result.response]
+        const newORderAlter = [...result.alters]
+        newORderAlter.sort((a, b) => a.name.localeCompare(b.name))
+        newORderMain.sort((a, b) => a.name.localeCompare(b.name))
+        dispatch(addMains(newORderMain))
+        dispatch(addAlters(newORderAlter))
         setLoader(false)
-        setJsonData(newORder)
-        setRenderData(newORder)
+        setJsonData(newORderMain)
+        setRenderData(newORderMain)
       })
       .catch((err) => console.error('Error fetching data:', err))
-  }, [])
+  }, [dispatch])
 
   // Ordena por Clase
   const classOrder = () => {
@@ -52,29 +63,29 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
     for (let ele in classMap) {
       array.push(classMap[ele].sort((a, b) => a.name.localeCompare(b.name)))
     }
-    const newOrder = array.flat()
-    return newOrder
+    const newOrderMain = array.flat()
+    return newOrderMain
   }
 
   // Ordena por Nombre
   const nameOrder = () => {
     const order = [...jsonData]
-    const newORder = order.sort((a, b) => a.name.localeCompare(b.name))
-    return newORder
+    const newORderMain = order.sort((a, b) => a.name.localeCompare(b.name))
+    return newORderMain
   }
 
   // Ordena por Rango
   const rankOrder = () => {
-    const newORder = classOrder().sort(
+    const newORderMain = classOrder().sort(
       (a, b) => rankPriority[a.rank] - rankPriority[b.rank]
     )
-    return newORder
+    return newORderMain
   }
 
   const dkpsOrder = () => {
     const order = [...jsonData]
-    const newORder = order.sort((a, b) => b.net - a.net)
-    return newORder
+    const newORderMain = order.sort((a, b) => b.net - a.net)
+    return newORderMain
   }
 
   // Selecciona el Orden por Rango, Nombre o Clase!
@@ -101,7 +112,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   }
 
   return (
-    <div className='DkpsTable'>
+    <div onClick={() => setShowAlters(false)} className='DkpsTable'>
       <SearchPlayer
         setButtonShowAddDkp={setButtonShowAddDkp}
         showAddDKP={showAddDKP}
@@ -126,24 +137,15 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
         <div className='all-players'>
           {renderData.map((ele, i) => {
             return (
-              <div
-                ref={(el) => (playerRefs.current[ele.name] = el)}
-                style={{
-                  backgroundColor:
-                    (greenColor === ele.name && '#008104') ||
-                    (i % 2 !== 0 && '#86868623')
-                }}
-                className='player'
+              <RowPlayer
                 key={i}
-                id={ele.name}
-              >
-                <h1 style={{ color: selectColor(ele.class, ele) }}>
-                  {ele.name}
-                </h1>
-                <h1 style={{ color: selectColor(ele.class) }}>{ele.class}</h1>
-                <h1 style={{ color: selectColor(ele.class) }}>{ele.rank}</h1>
-                <h1 style={{ color: selectColor(ele.class) }}>{ele.net}</h1>
-              </div>
+                ele={ele}
+                i={i}
+                playerRefs={playerRefs}
+                greenColor={greenColor}
+                showAlters={showAlters}
+                setShowAlters={setShowAlters}
+              />
             )
           })}
         </div>

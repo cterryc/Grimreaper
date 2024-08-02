@@ -1,0 +1,39 @@
+.player-alters {
+  position: fixed;
+  top: 50%;
+  left: 49.5%;
+  transform: translate(-50%, -50%);
+  height: 800px;
+  width: 950px; /* Puedes ajustar el ancho según sea necesario */
+  background-color: rgba(28, 29, 29, 0.966);
+  border-radius: 5px;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.player-alters h1 {
+  font-size: 24px;
+  padding: 15px 0px;
+  margin: 0px;
+}
+
+.player-alters button {
+  position: absolute;
+  right: 0px;
+  border: 0px;
+  background-color: rgb(68, 0, 0);
+  border-radius: 5px;
+}
+.player-alters :hover {
+  background-color: brown;
+  transition: all 0.5s ease;
+  border: 0px;
+}
+
+.item-show {
+  height: 40px;
+  width: 40px;
+}
