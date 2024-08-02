@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { selectColor } from '../DkpsTable.service'
 import './RowPlayer.css'
-import { extract } from '@extractus/article-extractor'
+// import { extract } from '@extractus/article-extractor'
 
 const RowPlayer = ({
   ele,
@@ -12,11 +12,12 @@ const RowPlayer = ({
   setShowAlters
 }) => {
   const [color, setColor] = useState(i % 2 !== 0 && '#86868623')
-  const [playerInfo, setPlayerInfo] = useState({
-    left: [],
-    right: [],
-    botton: []
-  })
+  // const [playerInfo, setPlayerInfo] = useState({
+  //   left: [],
+  //   right: [],
+  //   botton: []
+  // })
+  const [itemsPlayer, setItemsPlayer] = useState([])
 
   const rowColor = (e) => {
     if (e) {
@@ -27,10 +28,10 @@ const RowPlayer = ({
   }
 
   const scrapPlayer = async () => {
-    const player = await extract(
-      `https://armory.warmane.com/character/${ele.name}/Icecrown/summary`
-    )
-    console.log(player)
+    // const player = await fetch(
+    //   `https://armory.warmane.com/api/character/${ele.name}/icecrown/summary`
+    // )
+    // console.log(player)
   }
 
   return (
