@@ -1,5 +1,6 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import userReducer from './slice/sliceLogin.js'
+import playerSlice from './slice/playerSlice.js'
 import storage from 'redux-persist/lib/storage'
 import { persistReducer } from 'redux-persist'
 import thunk from 'redux-thunk'
@@ -17,7 +18,10 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    user: persistedReducer,
+    players: playerSlice
+  },
   middleware: [thunk]
 })
 

@@ -70,10 +70,6 @@
   cursor: wait;
 }
 
-.addDkp-button-loader:hover {
-  /* pointer-events: none; */
-}
-
 .addDkp-button-loader:focus {
   outline: none;
 }

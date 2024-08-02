@@ -13,11 +13,11 @@ export const colorsClass = [
   { color: '#FFFFFF', class: 'Sacerdote' }
 ]
 
-export const selectColor = (playerClass, elemento) => {
+export const selectColor = (playerClass, _elemento) => {
   const filter = colorsClass.find((ele) => ele.class === playerClass)
-  if (!filter) {
-    console.log(elemento)
-  }
+  // if (!filter) {
+  //   console.log(elemento)
+  // }
   return filter?.color
 }
 

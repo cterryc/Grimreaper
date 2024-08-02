@@ -1,8 +1,5 @@
 /* .DkpsTable {
-  display: flex;
-  justify-content: center;
-
-  width: 100%;
+  position: relative;
 } */
 
 .header {
@@ -36,6 +33,9 @@
   display: flex;
   justify-content: space-between;
   /* background: #86868623; */
+  cursor: pointer;
+
+  /* position: relative; */
 }
 
 .player h1 {
