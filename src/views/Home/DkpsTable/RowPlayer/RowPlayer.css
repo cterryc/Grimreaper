@@ -20,14 +20,15 @@
   margin: 0px;
 }
 
-.player-alters button {
+.player-alters-button {
   position: absolute;
   right: 0px;
   border: 0px;
   background-color: rgb(68, 0, 0);
   border-radius: 5px;
 }
-.player-alters :hover {
+
+.player-alters-button:hover {
   background-color: brown;
   transition: all 0.5s ease;
   border: 0px;
@@ -36,4 +37,21 @@
 .item-show {
   height: 40px;
   width: 40px;
+}
+
+.rowplayer-info-container {
+  display: flex;
+  width: 100%;
+}
+
+.rowplayer-items {
+  width: 400px;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.rowplayer-alters {
+  flex: 1;
 }
