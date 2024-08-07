@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { selectColor } from '../DkpsTable.service'
+import { API, selectColor } from '../DkpsTable.service'
 import './RowPlayer.css'
-import { extract } from '@extractus/article-extractor'
+// import { extract } from '@extractus/article-extractor'
 
 const RowPlayer = ({
   ele,
@@ -12,11 +12,12 @@ const RowPlayer = ({
   setShowAlters
 }) => {
   const [color, setColor] = useState(i % 2 !== 0 && '#86868623')
-  const [playerInfo, setPlayerInfo] = useState({
-    left: [],
-    right: [],
-    botton: []
-  })
+  // const [playerInfo, setPlayerInfo] = useState({
+  //   left: [],
+  //   right: [],
+  //   botton: []
+  // })
+  const [infoPlayer, setInfoPlayer] = useState({})
 
   const rowColor = (e) => {
     if (e) {
@@ -26,11 +27,15 @@ const RowPlayer = ({
     }
   }
 
-  const scrapPlayer = async () => {
-    const player = await extract(
-      `https://armory.warmane.com/character/${ele.name}/Icecrown/summary`
-    )
-    console.log(player)
+  const fetchInfoPlayer = async () => {
+    try {
+      const player = await fetch(`${API}/scrap/${ele.name}`)
+      const data = await player.json()
+      console.log(data)
+      setInfoPlayer(data)
+    } catch (error) {
+      console.error('Error fetching player data:', error)
+    }
   }
 
   return (
@@ -44,7 +49,7 @@ const RowPlayer = ({
       id={ele.name}
       onClick={(e) => {
         e.stopPropagation()
-        scrapPlayer()
+        fetchInfoPlayer()
         setShowAlters(i)
       }}
       onMouseEnter={(e) => rowColor(e)}
@@ -57,19 +62,32 @@ const RowPlayer = ({
       {showAlters === i && (
         <div onClick={(e) => e.stopPropagation()} className='player-alters'>
           <h1>{ele.name}</h1>
-          <button onClick={() => setShowAlters(!showAlters)}>X</button>
-          <div>
-            <a
-              href='https://wotlk.ultimowow.com?item=50472&domain=es'
-              className='item-show'
-              rel='gems=23121&amp;ench=3832&amp;'
-              // rel='ench=3820&gems=3627:3879:0'
-            >
-              <img
-                src='https://cdn.warmane.com/wotlk/icons/large/inv_helmet_156.jpg'
-                alt='item wow'
-              />
-            </a>
+          <button
+            className='player-alters-button'
+            onClick={() => setShowAlters(!showAlters)}
+          >
+            X
+          </button>
+          <div className='rowplayer-info-container'>
+            <div className='rowplayer-items'>
+              {infoPlayer?.equipment?.map((ele, index) => {
+                return (
+                  <div key={index}>
+                    <a
+                      href={`https://wotlk.ultimowow.com?item=${ele.item}&domain=es`}
+                      className='item-show'
+                      // rel='gems=23121&amp;ench=3832&amp;'
+                    >
+                      <img
+                        src='https://cdn.warmane.com/wotlk/icons/large/inv_helmet_156.jpg'
+                        alt='item wow'
+                      />
+                    </a>
+                  </div>
+                )
+              })}
+            </div>
+            <div className='rowplayer-alters'>Alters</div>
           </div>
         </div>
       )}

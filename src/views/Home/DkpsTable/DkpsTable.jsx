@@ -3,7 +3,7 @@ import { header, rankPriority, API } from './DkpsTable.service'
 import './DkpsTable.css'
 import SearchPlayer from '../../../components/search/SearchPlayer'
 import RowPlayer from './RowPlayer/RowPlayer'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addAlters, addMains } from '../../../redux/slice/playerSlice'
 
 const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
@@ -14,8 +14,15 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   const playerRefs = useRef({})
   const [showAlters, setShowAlters] = useState(false)
   const dispatch = useDispatch()
-  const state = useSelector((state) => state)
-  console.log(state)
+  // const state = useSelector((state) => state)
+  // console.log(state)
+
+  // useEffect(() => {
+  //   fetch(`${API}/scrap/terryq`)
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data))
+  //     .catch((err) => console.log(err))
+  // }, [])
 
   useEffect(() => {
     setLoader(true)
