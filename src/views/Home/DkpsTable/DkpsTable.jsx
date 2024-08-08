@@ -32,7 +32,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
         const newORderMain = [...result.response]
         const newORderAlter = [...result.alters]
         newORderAlter.sort((a, b) => a.name.localeCompare(b.name))
-        newORderMain.sort((a, b) => a.name.localeCompare(b.name))
+        newORderMain.sort((a, b) => b.net - a.net)
         dispatch(addMains(newORderMain))
         dispatch(addAlters(newORderAlter))
         setLoader(false)

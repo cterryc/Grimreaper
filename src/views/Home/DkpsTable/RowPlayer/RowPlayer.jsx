@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { API, selectColor } from '../DkpsTable.service'
 import './RowPlayer.css'
+import { useSelector } from 'react-redux'
 // import { extract } from '@extractus/article-extractor'
 
 const RowPlayer = ({
@@ -12,12 +13,21 @@ const RowPlayer = ({
   setShowAlters
 }) => {
   const [color, setColor] = useState(i % 2 !== 0 && '#86868623')
+  const [alters, setAlter] = useState([])
+  const state = useSelector((state) => state.players)
+  const [infoPlayer, setInfoPlayer] = useState({})
   // const [playerInfo, setPlayerInfo] = useState({
   //   left: [],
   //   right: [],
   //   botton: []
   // })
-  const [infoPlayer, setInfoPlayer] = useState({})
+
+  useEffect(() => {
+    const alters = state.alters.filter((eleAlter) => {
+      return ele.name === eleAlter.mainPlayername
+    })
+    setAlter(alters)
+  }, [ele.name, state])
 
   const rowColor = (e) => {
     if (e) {
@@ -87,7 +97,11 @@ const RowPlayer = ({
                 )
               })}
             </div>
-            <div className='rowplayer-alters'>Alters</div>
+            <div className='rowplayer-alters'>
+              {alters.map((elemento, i) => {
+                return <div key={i}>{elemento.name}</div>
+              })}
+            </div>
           </div>
         </div>
       )}
