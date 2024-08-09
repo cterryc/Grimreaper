@@ -3,7 +3,7 @@ import { header, rankPriority, API } from './DkpsTable.service'
 import './DkpsTable.css'
 import SearchPlayer from '../../../components/search/SearchPlayer'
 import RowPlayer from './RowPlayer/RowPlayer'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addAlters, addMains } from '../../../redux/slice/playerSlice'
 
 const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
@@ -14,6 +14,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   const playerRefs = useRef({})
   const [showAlters, setShowAlters] = useState(false)
   const dispatch = useDispatch()
+  const state = useSelector((state) => state.players)
   // const state = useSelector((state) => state)
   // console.log(state)
 
@@ -145,6 +146,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
           {renderData.map((ele, i) => {
             return (
               <RowPlayer
+                state={state}
                 key={i}
                 ele={ele}
                 i={i}
