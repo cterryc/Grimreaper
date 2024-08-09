@@ -27,6 +27,7 @@ const RowPlayer = ({
     const alters = state.alters.filter((eleAlter) => {
       return ele.name === eleAlter.mainPlayername
     })
+    console.log(alters)
     setAlter(alters)
   }, [ele.name, state])
 
