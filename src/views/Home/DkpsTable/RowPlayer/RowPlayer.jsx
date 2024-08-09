@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { API, selectColor } from '../DkpsTable.service'
 import './RowPlayer.css'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 // import { extract } from '@extractus/article-extractor'
 
 const RowPlayer = ({
@@ -10,11 +10,12 @@ const RowPlayer = ({
   playerRefs,
   greenColor,
   showAlters,
-  setShowAlters
+  setShowAlters,
+  state
 }) => {
   const [color, setColor] = useState(i % 2 !== 0 && '#86868623')
   const [alters, setAlter] = useState([])
-  const state = useSelector((state) => state.players)
+  // const state = useSelector((state) => state.players)
   const [infoPlayer, setInfoPlayer] = useState({})
   // const [playerInfo, setPlayerInfo] = useState({
   //   left: [],
