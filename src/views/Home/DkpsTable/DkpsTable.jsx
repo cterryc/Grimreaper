@@ -16,7 +16,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   const dispatch = useDispatch()
   const state = useSelector((state) => state.players)
   // const state = useSelector((state) => state)
-  // console.log(state)
+  console.log(state)
 
   // useEffect(() => {
   //   fetch(`${API}/scrap/terryq`)
