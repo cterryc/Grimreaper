@@ -23,7 +23,7 @@ const RowPlayer = ({
   //   botton: []
   // })
 
-  const alters = state.alters.filter((eleAlter) => {
+  const alters = state.filter((eleAlter) => {
     return ele.name === eleAlter.mainPlayername
   })
   console.log(alters)

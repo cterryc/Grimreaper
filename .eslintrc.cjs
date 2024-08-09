@@ -20,6 +20,7 @@ module.exports = {
     'jsx-quotes': ['error', 'prefer-single'],
     semi: ['error', 'never'],
     'react/prop-types': 'off',
-    'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }]
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    'react-hooks/rules-of-hooks': 'error'
   }
 }

@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { getMainAndAlters } from '../actions/actionsCharacters'
 
 const initialState = {
   mains: [],
   alters: [],
   error: '',
-  loading: false
+  loader: false
 }
 
 // aqui se generan los reducers y las acciones
@@ -27,26 +28,31 @@ export const playerSlice = createSlice({
     // changeEmail: (state, action) => {
     //   state.email = action.payload
     // }
-  }
+  },
   // 3 acciones asincronas por cada acción creada
-  /* extraReducers: (builder) => {
+  extraReducers: (builder) => {
     builder
-      .addCase(loginUser.pending, (state) => {
+      .addCase(getMainAndAlters.pending, (state) => {
         // Aquí puedes manejar el estado mientras la acción está en curso (cargando)
         // Puedes mostrar un indicador de carga, por ejemplo
-        state.loading = true
+        state.loader = true
       })
-      .addCase(loginUser.fulfilled, (state, action) => {
+      .addCase(getMainAndAlters.fulfilled, (state, action) => {
         // Aquí puedes manejar el estado cuando la acción se completa exitosamente
-        state.loading = false
-        state.user = action.payload
+        state.loader = false
+        const newORderMain = [...action.payload.response]
+        const newORderAlter = [...action.payload.alters]
+        newORderAlter.sort((a, b) => a.name.localeCompare(b.name))
+        newORderMain.sort((a, b) => b.net - a.net)
+        state.mains = newORderMain
+        state.alters = newORderAlter
       })
-      .addCase(loginUser.rejected, (state, action) => {
+      .addCase(getMainAndAlters.rejected, (state, action) => {
         // Aquí puedes manejar el estado cuando la acción es rechazada (error)
-        state.loading = false
+        state.loader = false
         state.error = action.error.message
       })
-  } */
+  }
 })
 
 // La funcion "createSlice" de redux-toolkit, crea 2 propiedades dentro de "userSlice"

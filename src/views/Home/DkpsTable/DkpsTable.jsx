@@ -1,51 +1,53 @@
 import { useEffect, useState, useRef } from 'react'
-import { header, rankPriority, API } from './DkpsTable.service'
+import { header, rankPriority } from './DkpsTable.service'
 import './DkpsTable.css'
 import SearchPlayer from '../../../components/search/SearchPlayer'
 import RowPlayer from './RowPlayer/RowPlayer'
 import { useDispatch, useSelector } from 'react-redux'
-import { addAlters, addMains } from '../../../redux/slice/playerSlice'
+import { getMainAndAlters } from '../../../redux/actions/actionsCharacters'
 
 const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
-  const [jsonData, setJsonData] = useState([])
+  // const [jsonData] = useState([])
   const [renderData, setRenderData] = useState([])
-  const [loader, setLoader] = useState(false)
+  // const [loader, setLoader] = useState(false)
   const [greenColor, setGreenColor] = useState('')
   const playerRefs = useRef({})
   const [showAlters, setShowAlters] = useState(false)
   const dispatch = useDispatch()
-  const state = useSelector((state) => state.players)
-  // const state = useSelector((state) => state)
-  console.log(state)
-
-  // useEffect(() => {
-  //   fetch(`${API}/scrap/terryq`)
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data))
-  //     .catch((err) => console.log(err))
-  // }, [])
+  const { alters, mains, loader } = useSelector((state) => state.players)
+  console.log(alters)
 
   useEffect(() => {
-    setLoader(true)
-    fetch(`${API}/main`)
-      .then((res) => res.json())
-      .then((result) => {
-        const newORderMain = [...result.response]
-        const newORderAlter = [...result.alters]
-        newORderAlter.sort((a, b) => a.name.localeCompare(b.name))
-        newORderMain.sort((a, b) => b.net - a.net)
-        dispatch(addMains(newORderMain))
-        dispatch(addAlters(newORderAlter))
-        setLoader(false)
-        setJsonData(newORderMain)
-        setRenderData(newORderMain)
-      })
-      .catch((err) => console.error('Error fetching data:', err))
-  }, [dispatch])
+    // setLoader(true)
+    // fetch(`${API}/main`)
+    //   .then((res) => res.json())
+    //   .then((result) => {
+    //     const newORderMain = [...result.response]
+    //     const newORderAlter = [...result.alters]
+    //     newORderAlter.sort((a, b) => a.name.localeCompare(b.name))
+    //     newORderMain.sort((a, b) => b.net - a.net)
+    //     dispatch(addMains(newORderMain))
+    //     dispatch(addAlters(newORderAlter))
+    //     setLoader(false)
+    //     setJsonData(newORderMain)
+    //     setRenderData(newORderMain)
+    //   })
+    //   .catch((err) => console.error('Error fetching data:', err))
+    console.log(mains)
+    if (renderData.length === 0) {
+      setRenderData(mains)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mains])
+
+  useEffect(() => {
+    dispatch(getMainAndAlters())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // Ordena por Clase
   const classOrder = () => {
-    const order = [...jsonData]
+    const order = [...mains]
     const classMap = {
       Brujo: [],
       'Caballero de la Muerte': [],
@@ -77,7 +79,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
 
   // Ordena por Nombre
   const nameOrder = () => {
-    const order = [...jsonData]
+    const order = [...mains]
     const newORderMain = order.sort((a, b) => a.name.localeCompare(b.name))
     return newORderMain
   }
@@ -91,7 +93,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   }
 
   const dkpsOrder = () => {
-    const order = [...jsonData]
+    const order = [...mains]
     const newORderMain = order.sort((a, b) => b.net - a.net)
     return newORderMain
   }
@@ -124,7 +126,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
       <SearchPlayer
         setButtonShowAddDkp={setButtonShowAddDkp}
         showAddDKP={showAddDKP}
-        players={jsonData}
+        players={mains}
         onPlayerClick={scrollToPlayer}
         setRenderData={setRenderData}
       />
@@ -146,7 +148,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
           {renderData.map((ele, i) => {
             return (
               <RowPlayer
-                state={state}
+                state={alters}
                 key={i}
                 ele={ele}
                 i={i}
