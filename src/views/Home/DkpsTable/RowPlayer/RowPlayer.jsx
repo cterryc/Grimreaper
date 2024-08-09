@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { API, selectColor } from '../DkpsTable.service'
 import './RowPlayer.css'
 // import { useSelector } from 'react-redux'
@@ -14,7 +14,7 @@ const RowPlayer = ({
   state
 }) => {
   const [color, setColor] = useState(i % 2 !== 0 && '#86868623')
-  const [alters, setAlter] = useState([])
+  // const [alters, setAlter] = useState([])
   // const state = useSelector((state) => state.players)
   const [infoPlayer, setInfoPlayer] = useState({})
   // const [playerInfo, setPlayerInfo] = useState({
@@ -23,13 +23,10 @@ const RowPlayer = ({
   //   botton: []
   // })
 
-  useEffect(() => {
-    const alters = state.alters.filter((eleAlter) => {
-      return ele.name === eleAlter.mainPlayername
-    })
-    console.log(alters)
-    setAlter(alters)
-  }, [ele.name, state])
+  const alters = state.alters.filter((eleAlter) => {
+    return ele.name === eleAlter.mainPlayername
+  })
+  console.log(alters)
 
   const rowColor = (e) => {
     if (e) {
