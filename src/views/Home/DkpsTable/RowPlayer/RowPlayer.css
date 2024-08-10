@@ -55,3 +55,12 @@
 .rowplayer-alters {
   flex: 1;
 }
+
+.rowplayer-alters h1 {
+  width: 100%;
+  margin: 0px;
+  padding: 5px 0px;
+  text-decoration: underline;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 24px;
+}

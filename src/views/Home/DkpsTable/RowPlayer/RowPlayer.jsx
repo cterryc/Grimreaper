@@ -26,7 +26,6 @@ const RowPlayer = ({
   const alters = state.filter((eleAlter) => {
     return ele.name === eleAlter.mainPlayername
   })
-  console.log(alters)
 
   const rowColor = (e) => {
     if (e) {
@@ -97,6 +96,7 @@ const RowPlayer = ({
               })}
             </div>
             <div className='rowplayer-alters'>
+              <h1>Alters</h1>
               {alters.map((elemento, i) => {
                 return <div key={i}>{elemento.name}</div>
               })}

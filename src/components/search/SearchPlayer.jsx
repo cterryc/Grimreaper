@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './SearchPlayer.css'
+import { useSelector } from 'react-redux'
 
 const SearchPlayer = ({
   players,
@@ -11,6 +12,9 @@ const SearchPlayer = ({
   const [found, setFound] = useState([])
   const [inputValue, setInputValue] = useState('')
   const [colorH1, setColorH1] = useState({})
+  const { date } = useSelector((state) => state.players)
+  const [dateOne, dateTwo] = date.split(' ')
+  const [day, month] = dateOne.split('-')
 
   const find = (e) => {
     e.preventDefault()
@@ -48,7 +52,12 @@ const SearchPlayer = ({
     <div className='searchplayer-form-container'>
       <form className='searchplayer-form' onSubmit={onSubmitForm}>
         <div>
-          <input value={inputValue} type='text' onChange={find} />
+          <input
+            value={inputValue}
+            type='text'
+            onChange={find}
+            placeholder='Buscar Personaje Main'
+          />
           {found.length > 0 && (
             <div className='searchplayer-found'>
               {found.map((ele, i) => {
@@ -90,6 +99,18 @@ const SearchPlayer = ({
           </button>
         </div>
       )}
+      <div className='date-container'>
+        <div
+          onClick={(e) => {
+            e.stopPropagation()
+            setButtonShowAddDkp(true)
+          }}
+          className='date'
+        >
+          <h1>Ultima actualizacion:</h1>
+          <h1>{`${day} de ${month} - ${dateTwo}`}</h1>
+        </div>
+      </div>
     </div>
   )
 }
