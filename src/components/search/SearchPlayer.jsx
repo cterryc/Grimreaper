@@ -13,8 +13,16 @@ const SearchPlayer = ({
   const [inputValue, setInputValue] = useState('')
   const [colorH1, setColorH1] = useState({})
   const { date } = useSelector((state) => state.players)
-  const [dateOne, dateTwo] = date.split(' ')
-  const [day, month] = dateOne.split('-')
+  let hoursMin = ''
+  let day = ''
+  let month = ''
+  if (date) {
+    const [dateOne, dateTwo] = date.split(' ')
+    hoursMin = dateTwo
+    const [first, second] = dateOne.split('-')
+    day = first
+    month = second
+  }
 
   const find = (e) => {
     e.preventDefault()
@@ -108,7 +116,7 @@ const SearchPlayer = ({
           className='date'
         >
           <h1>Ultima actualizacion:</h1>
-          <h1>{`${day} de ${month} - ${dateTwo}`}</h1>
+          <h1>{`${day} de ${month} - ${hoursMin}`}</h1>
         </div>
       </div>
     </div>
