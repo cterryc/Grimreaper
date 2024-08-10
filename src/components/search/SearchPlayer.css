@@ -113,3 +113,37 @@
 .button-add-dkp:active {
   background-color: #302828;
 }
+
+.date-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  pointer-events: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.date {
+  height: 30px;
+  width: 150px;
+  background-color: #79030393;
+  margin: 0px;
+  padding: 0px 10px;
+  border: 0px;
+  pointer-events: painted;
+  border-radius: 5px;
+  font-size: 14px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.date h1 {
+  font-size: 14px;
+}

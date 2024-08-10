@@ -5,7 +5,8 @@ const initialState = {
   mains: [],
   alters: [],
   error: '',
-  loader: false
+  loader: false,
+  date: ''
 }
 
 // aqui se generan los reducers y las acciones
@@ -44,8 +45,10 @@ export const playerSlice = createSlice({
         const newORderAlter = [...action.payload.alters]
         newORderAlter.sort((a, b) => a.name.localeCompare(b.name))
         newORderMain.sort((a, b) => b.net - a.net)
+        console.log(action.payload)
         state.mains = newORderMain
         state.alters = newORderAlter
+        state.date = action.payload.date
       })
       .addCase(getMainAndAlters.rejected, (state, action) => {
         // Aquí puedes manejar el estado cuando la acción es rechazada (error)
