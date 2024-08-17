@@ -15,7 +15,6 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   const [showAlters, setShowAlters] = useState(false)
   const dispatch = useDispatch()
   const { alters, mains, loader } = useSelector((state) => state.players)
-  console.log(alters)
 
   useEffect(() => {
     // setLoader(true)

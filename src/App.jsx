@@ -5,6 +5,7 @@ import NavBar from './components/Navbar/NavBar'
 import Login from './components/Login/Login'
 import { useState } from 'react'
 import Register from './components/Register/Register'
+import ItemBis from './views/ItemsBis/ItemsBis'
 
 const App = () => {
   const [showAddDKP, setShowAddDkp] = useState(false)
@@ -12,7 +13,7 @@ const App = () => {
   console.log(pathname)
   return (
     <div className='App'>
-      {(pathname !== '/login' && pathname !== '/register') && <NavBar />}
+      {pathname !== '/login' && pathname !== '/register' && <NavBar />}
       <Routes>
         <Route path='/' element={<Home showAddDKP={showAddDKP} />} />
         <Route
@@ -22,6 +23,10 @@ const App = () => {
         <Route
           path='/register'
           element={<Register setShowAddDkp={setShowAddDkp} />}
+        />
+        <Route
+          path='/itembis/*'
+          element={<ItemBis setShowAddDkp={setShowAddDkp} />}
         />
       </Routes>
     </div>

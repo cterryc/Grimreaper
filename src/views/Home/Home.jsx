@@ -2,9 +2,11 @@ import { useState } from 'react'
 import AddDkp from '../../components/AddDKP/AddDkp'
 import DkpsTable from './DkpsTable/DkpsTable'
 import './Home.css'
+// import { NavLink } from 'react-router-dom'
 
 const Home = ({ showAddDKP }) => {
   const [buttonShowAddDkp, setButtonShowAddDkp] = useState(false)
+
   return (
     <div className='Home' onClick={() => setButtonShowAddDkp(false)}>
       <DkpsTable
