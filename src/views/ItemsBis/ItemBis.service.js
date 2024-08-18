@@ -136,7 +136,7 @@ export const englishListItemsBis = {
       img: 'https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_85.jpg'
     },
     "Aldriana's Gloves of Secrecy": {
-      class: ['Rogue', 'Warr Fury'],
+      class: ['Rogue', 'Warr Fury', 'Druid Cat'],
       id: '50675',
       img: 'https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_79.jpg'
     },
