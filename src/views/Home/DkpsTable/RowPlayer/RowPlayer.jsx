@@ -10,6 +10,7 @@ const RowPlayer = ({
   i,
   playerRefs,
   greenColor,
+  setGreenColor,
   showAlters,
   setShowAlters,
   state
@@ -107,17 +108,29 @@ const RowPlayer = ({
     }
   }
 
+  const changetGreenColor = () => {
+    if (greenColor === ele.name) {
+      setTimeout(() => {
+        setGreenColor('')
+      }, 3000)
+    }
+    return '#008104'
+  }
+
   return (
     <div
       ref={(el) => (playerRefs.current[ele.name] = el)}
       style={{
-        backgroundColor: (greenColor === ele.name && '#008104') || color
+        backgroundColor:
+          (greenColor === ele.name && changetGreenColor()) || color,
+        transition: 'all 0.3s ease'
       }}
       className='player'
       key={i}
       id={ele.name}
       onClick={(e) => {
         e.stopPropagation()
+        rowColor()
         fetchInfoPlayer()
         setShowAlters(i)
       }}

@@ -10,42 +10,54 @@ export const englishListItemsBis = {
     "Blood Queen's Crimson Choker": {
       class: ['Rshamy', 'Disci', 'Mage', 'Hpala', 'Balance'],
       id: '50182',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelcrafting_crimsonspinel_02.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelcrafting_crimsonspinel_02.jpg',
+      drop: 'Reina'
     },
     "Sindragosa's Cruel Claw": {
       class: ['Rogue Combat', 'Hunter', 'Druid Cat'],
       id: '50633',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_monsterhorn_03.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_monsterhorn_03.jpg',
+      drop: 'Sindra'
     },
     'Amulet of Silent Eulogy': {
       class: ['Shadow P', 'Warlock'],
       id: '50658',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrownnecklaced.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrownnecklaced.jpg',
+      drop: 'Barcos'
     },
     'Penumbra Pendant': {
       class: ['Warr Fury', 'Dk Uh', 'Pala Ret'],
       id: '54581',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_necklace_48.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_necklace_48.jpg',
+      drop: 'Halion'
     },
     'Bile-encrusted Medallion': {
       class: ['War Prot', 'Pala Prot', 'Dk Blood Tank', 'Druid Bear'],
       id: '50682',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrownnecklaceb.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrownnecklaceb.jpg',
+      drop: 'Carapútrea'
     },
     "Bone Sentinel's Amulet": {
       class: ['Druid Rest'],
       id: '50609',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_necklace_53.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_necklace_53.jpg',
+      drop: 'Tuetano'
     }
   },
-  Shoulders: {
-    'Spaulders of the Blood Princes': {
-      class: ['Pala Prot'],
-      id: '51847',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_shoulder_130.jpg'
-    }
-  },
+  // Shoulders: {
+  //   'Spaulders of the Blood Princes': {
+  //     class: ['Pala Prot'],
+  //     id: '51847',
+  //     img: 'https://wow.zamimg.com/images/wow/icons/large/inv_shoulder_130.jpg'
+  //   }
+  // },
   Cape: {
+    'Winding Sheet': {
+      class: ['Dk Uh'],
+      id: '50677',
+      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrowncape.jpg',
+      drop: 'Carapútrea'
+    },
     'Cloak of Burning Dusk': {
       class: [
         'Rshamy',
@@ -57,152 +69,186 @@ export const englishListItemsBis = {
         'Druid Balance'
       ],
       id: '54583',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_cape_16.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_cape_16.jpg',
+      drop: 'Halion'
     },
     'Greatcloak of the Turned Champion': {
       class: ['Druid Rest'],
       id: '50668',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrowncape.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrowncape.jpg',
+      drop: 'Libra'
     },
     "Vereesa's Dexterity": {
       class: ['Rogue', 'Hunter', 'Warr Fury'],
       id: '47545',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_cape_16.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_cape_16.jpg',
+      drop: 'Toc25HC'
     },
     "Sentinel's Winter Cloak": {
       class: ['Warr Prot', 'Dk Blood Tank', 'Pala Prot', 'Druid Bear'],
       id: '50466',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_cape_13.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_cape_13.jpg',
+      drop: 'EOF'
     },
     "Shadowvault Slayer's Cloak": {
       class: ['Pala Ret', 'Druid Cat'],
       id: '50653',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrowncloak.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrowncloak.jpg',
+      drop: 'Barcos'
     }
   },
   Chest: {
     "Ikfirus's Sack of Wonder": {
       class: ['Rogue', 'Druid Bear'],
       id: '50656',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_chest_leather_22.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_chest_leather_22.jpg',
+      drop: 'Barcos'
     },
     'Robe of the Waking Nightmare': {
       class: ['Mage'],
       id: '50629',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_chest_cloth_77.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_chest_cloth_77.jpg',
+      drop: 'Valithria'
     },
     'Sanguine Silk Robes': {
       class: ['Druid Rest'],
       id: '50717',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_chest_cloth_80.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_chest_cloth_80.jpg',
+      drop: 'Principes'
     }
   },
   Wrist: {
     'Bracers of Fiery Night': {
       class: ['Rshamy', 'Shadow P', 'Warlock', 'Mage', 'Disci'],
       id: '54582',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_bracer_45.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_bracer_45.jpg',
+      drop: 'Halion'
     },
     "Phaseshifter's Bracers": {
       class: ['Hpala', 'Druid Rest', 'Druid Balance'],
       id: '54584',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_bracer_40.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_bracer_40.jpg',
+      drop: 'Halion'
     },
     "Toskk's Maximized Wristguards": {
       class: ['Rogue', 'Warr Fury'],
       id: '50670',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_bracer_41.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_bracer_41.jpg',
+      drop: 'Libra'
     },
     "Scourge Hunter's Vambraces": {
       class: ['Hunter'],
       id: '50655',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_bracer_40.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_bracer_40.jpg',
+      drop: 'Barcos'
     },
     'Umbrage Armbands': {
       class: ['Dk Uh', 'Pala Ret', 'Druid Cat'],
       id: '54580',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_bracer_41.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_bracer_41.jpg',
+      drop: 'Halion'
     }
   },
   Hands: {
+    "San'layn Ritualist Gloves": {
+      class: ['Disci'],
+      id: '50722',
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_92.jpg',
+      drop: 'principes'
+    },
     'Changeling Gloves': {
       class: ['Rshamy'],
-      id: 'Changeling Gloves',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_83.jpg'
+      id: '54560',
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_83.jpg',
+      drop: 'Halion 10HC'
     },
     "Fallen Lord's Handguards": {
       class: ['Hpala'],
       id: '50650',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_85.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_85.jpg',
+      drop: 'Lady'
     },
     "Aldriana's Gloves of Secrecy": {
       class: ['Rogue', 'Warr Fury', 'Druid Cat'],
       id: '50675',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_79.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_79.jpg',
+      drop: 'Carapútrea'
     },
     "Anub'ar Stalker's Gloves": {
       class: ['Pala Ret'],
       id: '50619',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_84.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_84.jpg',
+      drop: 'Valithria'
     }
   },
   Waist: {
     'Split Shape Belt': {
       class: ['Rshamy', 'Hpala'],
       id: '54587',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_83.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_83.jpg',
+      drop: 'Halion'
     },
     "Astrylian's Sutured Cinch": {
       class: ['Rogue', 'Pala Ret', 'Druid Cat', 'Druid Bear'],
       id: '50707',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_61.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_61.jpg',
+      drop: 'Putricidio'
     },
     "Nerub'ar Stalker's Cord": {
       class: ['Hunter'],
       id: '50688',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_60.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_60.jpg',
+      drop: 'Panzachancro'
     },
     'Crushing Coldwraith Belt': {
       class: ['Shadow P', 'Disci', 'Warlock', 'Mage', 'Druid Balance'],
       id: '50613',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_64.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_64.jpg',
+      drop: 'Tuetano'
     },
     'Coldwraith Links': {
       class: ['Warrior Fury', 'Dk Uh'],
       id: '50620',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_63.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_63.jpg',
+      drop: 'Valithria'
     },
     "Professor's Bloodied Smock": {
       class: ['Druid Rest'],
       id: '50705',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_59.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_59.jpg',
+      drop: 'Putricidio'
     }
   },
   Legs: {
     'Gangrenous Leggings': {
       class: ['Rogue'],
       id: '50697',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_pants_leather_34.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_pants_leather_34.jpg',
+      drop: 'Panzachancro'
     },
     'Leggings of Northern Lights': {
       class: ['Hunter'],
       id: '50645',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_pants_mail_32.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_pants_mail_32.jpg',
+      drop: 'Lady'
     },
     "Plaguebringer's Stained Pants": {
       class: ['Shadow P', 'Warlock', 'Hpala', 'Druid Balance'],
       id: '50694',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_kilt_cloth_02.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_kilt_cloth_02.jpg',
+      drop: 'Panzachancro'
     },
     "Scourge Reaver's Legplates": {
       class: ['Warr Fury', 'Dk Uh'],
       id: '50624',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_pants_plate_31.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_pants_plate_31.jpg',
+      drop: 'Valithria'
     },
     'Legguards of Lost Hope': {
       class: ['Dk Blood Tank', 'Pala Prot'],
       id: '50612',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_pants_plate_31.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_pants_plate_31.jpg',
+      drop: 'Tuetano'
     }
   },
   Feet: {
@@ -216,158 +262,188 @@ export const englishListItemsBis = {
         'Druid Balance'
       ],
       id: '50699',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_boots_cloth_24.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_boots_cloth_24.jpg',
+      drop: 'Panzachancro'
     },
     'Boots of Unnatural Growth': {
       class: ['Druid Rest'],
       id: '50665',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_boots_leather_8.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_boots_leather_8.jpg',
+      drop: 'Barcos'
     },
     'Frostbitten Fur Boots': {
       class: ['Rogue', 'Druid Cat', 'Druid Bear'],
       id: '50607',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_boots_leather_07.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_boots_leather_07.jpg',
+      drop: 'Tuetano'
     },
     'Returning Footfalls': {
       class: ['Hunter'],
       id: '54577',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_boots_mail_06.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_boots_mail_06.jpg',
+      drop: 'Halion'
     },
     "Apocalypse's Advance": {
       class: ['Warr Fury', 'Dk Uh', 'Pala Ret'],
       id: '54578',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_boots_plate_12.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_boots_plate_12.jpg',
+      drop: 'Halion'
     }
   },
   Ring: {
     'Ring of Phased Regeneration': {
       class: ['Rshamy', 'Hpala', 'Rdudu'],
       id: '54585',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrownringb.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrownringb.jpg',
+      drop: 'Halion'
     },
     'Ring of Rapid Ascent': {
-      class: ['Shadow P', 'Disci', 'Druid Balance'],
+      class: ['Shadow P', 'Disci', 'Druid Balance', 'Mage'],
       id: '50664',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_86.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_86.jpg',
+      drop: 'Barcos'
     },
     "Valanar's Other Signet Ring": {
       class: ['Warlock'],
       id: '50714',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_81.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_81.jpg',
+      drop: 'Principes'
     },
     'Loop of the Endless Labyrinth': {
-      class: ['Mage'],
+      class: ['Mage', 'Warlock', '"No BiS Prioridad Hit"'],
       id: '50614',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_82.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_82.jpg',
+      drop: 'Tuetano'
     },
     'Frostbrood Sapphire Ring': {
       class: ['Rogue', 'Hunter', 'Warr Fury'],
       id: '50618',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrownringa.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrownringa.jpg',
+      drop: 'Valithria'
     },
     'Signet of Twilight': {
       class: ['Pala Ret', 'Feral Cat'],
       id: '54576',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrownringc.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrownringc.jpg',
+      drop: 'Halion'
     },
     'Might of Blight': {
       class: ['Dk Uh'],
       id: '50693',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_84.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_ring_84.jpg',
+      drop: 'Panzachancro'
     }
   },
   Trinket: {
     'Glowing Twilight Scale': {
       class: ['Rshamy', 'Disci', 'Hpala', 'Druid Rest'],
       id: '54573',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_rubysanctum1.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_rubysanctum1.jpg',
+      drop: 'Halion'
     },
     'Solace of the Fallen': {
       class: ['Rshamy'],
       id: '47432',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/achievement_dungeon_ulduar77_25man.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/achievement_dungeon_ulduar77_25man.jpg',
+      drop: 'TOC-25'
     },
     "Deathbringer's Will": {
       class: ['Rogue', 'Druid Cat', 'Hunter', 'Warr Fury', 'Dk Uh'],
       id: '50363',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_trinket_04.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_trinket_04.jpg',
+      drop: 'Libra'
     },
     'Sharpened Twilight Scale': {
       class: ['Rogue', 'Hunter', 'Warr Fury', 'Dk Uh', 'Pala Ret', 'Druid Cat'],
       id: '54590',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_rubysanctum4.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_rubysanctum4.jpg',
+      drop: 'Halion'
     },
     'Phylactery of the Nameless Lich': {
       class: ['Shadow P', 'Warlock', 'Mage', 'Druid Balance'],
       id: '50365',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_trinket_03.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_trinket_03.jpg',
+      drop: 'Sindra'
     },
     'Charred Twilight Scale': {
       class: ['Shadow P', 'Warlock', 'Mage', 'Druid Balance'],
       id: '54588',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_rubysanctum2.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_rubysanctum2.jpg',
+      drop: 'Halion'
     },
     "Althor's Abacus": {
       class: ['Disci', 'Druid Rest'],
       id: '50366',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_trinket_02.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_jewelry_trinket_02.jpg',
+      drop: 'Barcos'
     },
     'Meteorite Crystal': {
       class: ['Hpala'],
       id: '46051',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/achievement_dungeon_ulduarraid_misc_04.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/achievement_dungeon_ulduarraid_misc_04.jpg',
+      drop: 'Ulduar'
     }
   },
   Weapon: {
     'Royal Scepter of Terenas II': {
       class: ['Rshamy', 'Disci', 'Shadow P', 'Druid Balance', 'Druid Rest'],
       id: '50734',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_mace_115.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_mace_115.jpg',
+      drop: 'LK'
     },
     'Bulwark of Smouldering Steel': {
       class: ['Rshamy', 'Hpala'],
       id: '50616',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_shield_72.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_shield_72.jpg',
+      drop: 'Tuetano'
     },
     "Bloodsurge, Kel'Thuzad's Blade of Agony": {
       class: ['Warlock', 'Mage', 'Hpala'],
       id: '50732',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_sword_150.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_sword_150.jpg',
+      drop: 'LK'
     },
     "Havoc's Call, Blade of Lordaeron Kings": {
       class: ['Rogue'],
       id: '50737',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_axe_113.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_axe_113.jpg',
+      drop: 'LK'
     },
     'Scourgeborne Waraxe': {
       class: ['Rogue'],
       id: '50654',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_axe_113.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_axe_113.jpg',
+      drop: 'Barcos'
     },
     'Oathbinder, Charge of the Ranger-General': {
       class: ['Hunter', 'Pala Ret', 'Druid Cat', 'Druid Bear'],
       id: '50735',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_weapon_staff_109.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_weapon_staff_109.jpg',
+      drop: 'LK'
     },
     Shadowmourne: {
       class: ['War Fury', 'Pala Ret', 'Dk Uh'],
       id: '49623',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_axe_113.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_axe_113.jpg',
+      drop: 'Quest'
     },
     'Glorenzelg, High-Blade of the Silver Hand': {
       class: ['Dk Blood Tank', 'Dk Uh', 'Warr Fury'],
       id: '50730',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_sword_153.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_sword_153.jpg',
+      drop: 'LK'
     },
     'Shadow Silk Spindle': {
       class: ['Disci', 'Shadow P', 'Warlock', 'Mage', 'Druid Balance'],
       id: '50719',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_thread_01.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_misc_thread_01.jpg',
+      drop: 'Principes'
     },
     'Sundial of Eternal Dusk': {
       class: ['Druid Rest'],
       id: '50635',
-      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_offhand_zulaman_d_02.jpg'
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_offhand_zulaman_d_02.jpg',
+      drop: 'Sindra'
     }
   }
 }
@@ -399,10 +475,11 @@ export const spanishListItemsBis = {
     ],
     'Amuleto de centinela osario': ['Druid Rest']
   },
-  Shoulders: {
-    'Bufas de los príncipes de sangre': ['Pala Prot']
-  },
+  // Shoulders: {
+  //   'Bufas de los príncipes de sangre': ['Pala Prot']
+  // },
   Cape: {
+    'Frazada enrollada': ['Dk Uh'],
     'Capa de ocaso ardiente': [
       'Rshamy',
       'Shadow P',
@@ -441,6 +518,11 @@ export const spanishListItemsBis = {
     'Bandas agraviadas': ['Dk Uh', 'Pala Ret', 'Druid Cat']
   },
   Hands: {
+    "Guantes de ritualista San'layn": {
+      class: ['Disci'],
+      id: '50722',
+      img: 'https://wow.zamimg.com/images/wow/icons/large/inv_gauntlets_92.jpg'
+    },
     'Guantes cambiadores': ['Rshamy'],
     'Manoplas de señor caído': ['Hpala'],
     'Guantes de secretos de Aldriana': ['Rogue', 'Warr Fury'],
