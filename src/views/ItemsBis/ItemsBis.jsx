@@ -82,9 +82,20 @@ const ItemBis = () => {
                       href={`https://wotlk.ultimowow.com?item=${
                         items.class[i].id
                       }&domain=${!language ? 'en' : 'es'}`}
-                      style={{ height: '57px' }}
+                      style={{
+                        height: '57px'
+                      }}
                     >
-                      <img src={items.class[i].img} alt={itemName} />
+                      <img
+                        style={{
+                          border:
+                            (itemName === 'Agonía de Sombras' ||
+                              itemName === 'Shadowmourne') &&
+                            'solid 2px rgb(197 73 0)'
+                        }}
+                        src={items.class[i].img}
+                        alt={itemName}
+                      />
                     </a>
                     <li>{itemName}</li>
                   </div>
@@ -100,6 +111,17 @@ const ItemBis = () => {
                     {ele.class.map((classEle, j) => {
                       return <li key={j}>{classEle}</li>
                     })}
+                  </div>
+                )
+              })}
+          </ul>
+          <ul className='items-class-container'>
+            {items &&
+              items.class.map((ele, i) => {
+                console.log(ele)
+                return (
+                  <div key={i} className='loot-container'>
+                    {ele.drop}
                   </div>
                 )
               })}

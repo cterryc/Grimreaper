@@ -153,6 +153,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
                 i={i}
                 playerRefs={playerRefs}
                 greenColor={greenColor}
+                setGreenColor={setGreenColor}
                 showAlters={showAlters}
                 setShowAlters={setShowAlters}
               />

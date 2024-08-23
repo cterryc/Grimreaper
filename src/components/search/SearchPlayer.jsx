@@ -22,6 +22,7 @@ const SearchPlayer = ({
     const [first, second] = dateOne.split('-')
     day = first
     month = second
+    console.log(date)
   }
 
   const find = (e) => {
