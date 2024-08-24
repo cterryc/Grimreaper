@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { API, selectColor } from '../DkpsTable.service'
+import { APISCRAP, selectColor } from '../DkpsTable.service'
 import { itemsLeft, itemsBottom, itemsRight } from './RowTables.service'
 import './RowPlayer.css'
 // import { useSelector } from 'react-redux'
@@ -44,7 +44,7 @@ const RowPlayer = ({
           setScaning(false)
         }
         setNameCharacter(namePlayer)
-        const player = await fetch(`${API}/scrap/${namePlayer}`)
+        const player = await fetch(`${APISCRAP}/api/${namePlayer}`)
         const data = await player.json()
         console.log(data)
         setScaning(true)
@@ -65,7 +65,7 @@ const RowPlayer = ({
         if (nameCharacter) {
           setNameCharacter('')
         }
-        const player = await fetch(`${API}/scrap/${ele.name}`)
+        const player = await fetch(`${APISCRAP}/api/${ele.name}`)
         const data = await player.json()
         console.log(data)
         setScaning(true)
