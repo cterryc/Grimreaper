@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import { APISCRAP, selectColor } from '../DkpsTable.service'
-import { itemsLeft, itemsBottom, itemsRight } from './RowTables.service'
+import {
+  itemsLeft,
+  itemsBottom,
+  itemsRight,
+  allGemsList
+} from './RowTables.service'
 import './RowPlayer.css'
 // import { useSelector } from 'react-redux'
 // import { extract } from '@extractus/article-extractor'
@@ -103,18 +108,35 @@ const RowPlayer = ({
         if (itemId[1][0] === 'e') {
           ench = itemId[1]
         } else if (itemId[1][0] === 'g') {
-          gems = itemId[1]
+          const allGems = itemId[1]?.split('=')
+          const idGems = allGems[1]?.split(':')
+          console.log(idGems)
+          const gem1 = idGems[0]
+          const gem2 = idGems[1]
+          const gem3 = idGems[2]
+          gems = `gems=${gem1 !== 0 ? allGemsList[gem1] : 0}:${
+            gem2 !== 0 ? allGemsList[gem2] : 0
+          }:${gem3 !== 0 ? allGemsList[gem3] : 0}`
+          // gems = itemId[1]
         }
       }
       if (itemId[2]) {
         if (itemId[2][0] === 'g') {
-          gems = itemId[2]
+          const allGems = itemId[2]?.split('=')
+          const idGems = allGems[1]?.split(':')
+          const gem1 = idGems[0]
+          const gem2 = idGems[1]
+          const gem3 = idGems[2]
+          gems = `gems=${gem1 !== 0 ? allGemsList[gem1] : 0}:${
+            gem2 !== 0 ? allGemsList[gem2] : 0
+          }:${gem3 !== 0 ? allGemsList[gem3] : 0}`
+          // gems = itemId[2]
         }
       }
       console.log({ id: itemId[0], ench, gems })
       return { id: itemId[0], ench, gems }
     } catch (error) {
-      console.log('Esperando respuesta')
+      console.log(error)
     }
   }
 
@@ -183,7 +205,9 @@ const RowPlayer = ({
                               getItemId(index, 'left')?.id
                             }&domain=es`}
                             className='item-show'
-                            rel={getItemId(index, 'left')?.ench}
+                            rel={`${getItemId(index, 'left')?.gems}&amp;${
+                              getItemId(index, 'left')?.ench
+                            }`}
                           >
                             {infoPlayer.left[index]?.src ? (
                               <img
@@ -211,7 +235,9 @@ const RowPlayer = ({
                               getItemId(index, 'right')?.id
                             }&domain=es`}
                             className='item-show'
-                            rel={getItemId(index, 'right')?.ench}
+                            rel={`${getItemId(index, 'right')?.gems}&amp;${
+                              getItemId(index, 'right')?.ench
+                            }`}
                           >
                             {infoPlayer.right[index]?.src ? (
                               <img
@@ -239,7 +265,9 @@ const RowPlayer = ({
                               getItemId(index, 'bottom')?.id
                             }&domain=es`}
                             className='item-show'
-                            rel={getItemId(index, 'bottom')?.ench}
+                            rel={`${getItemId(index, 'bottom')?.gems}&amp;${
+                              getItemId(index, 'bottom')?.ench
+                            }`}
                           >
                             {infoPlayer.bottom[index]?.src ? (
                               <img

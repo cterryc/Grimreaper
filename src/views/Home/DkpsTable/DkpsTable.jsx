@@ -32,7 +32,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
     //     setRenderData(newORderMain)
     //   })
     //   .catch((err) => console.error('Error fetching data:', err))
-    console.log(mains)
+    // console.log(mains)
     if (renderData.length === 0) {
       setRenderData(mains)
     }

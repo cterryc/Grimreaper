@@ -5,14 +5,14 @@ import './ItemBis.css'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 const slotSpanish = Object.keys(spanishListItemsBis)
-console.log(slotSpanish)
+// console.log(slotSpanish)
 const valuesSpanish = Object.values(spanishListItemsBis)
-console.log(valuesSpanish)
+// console.log(valuesSpanish)
 
-const slotEnglish = Object.keys(englishListItemsBis)
-console.log(slotEnglish)
+// const slotEnglish = Object.keys(englishListItemsBis)
+// console.log(slotEnglish)
 const valuesEnglish = Object.values(englishListItemsBis)
-console.log(valuesEnglish)
+// console.log(valuesEnglish)
 
 const ItemBis = () => {
   const [slotSelected, setSlotSelected] = useState(0)
@@ -24,7 +24,7 @@ const ItemBis = () => {
   const navigate = useNavigate()
   const [loader, setLoader] = useState(false)
 
-  console.log('esto es items ??>', items.class)
+  // console.log('esto es items ??>', items.class)
 
   useEffect(() => {
     navigate('/itembis/Neck')
