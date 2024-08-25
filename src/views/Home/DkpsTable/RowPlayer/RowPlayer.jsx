@@ -44,7 +44,12 @@ const RowPlayer = ({
           setScaning(false)
         }
         setNameCharacter(namePlayer)
-        const player = await fetch(`${APISCRAP}/api/${namePlayer}`)
+        const player = await fetch(`${APISCRAP}/api/${namePlayer}`, {
+          method: 'GET',
+          headers: {
+            'ngrok-skip-browser-warning': 'true'
+          }
+        })
         const data = await player.json()
         console.log(data)
         setScaning(true)
@@ -65,7 +70,12 @@ const RowPlayer = ({
         if (nameCharacter) {
           setNameCharacter('')
         }
-        const player = await fetch(`${APISCRAP}/api/${ele.name}`)
+        const player = await fetch(`${APISCRAP}/api/${ele.name}`, {
+          method: 'GET',
+          headers: {
+            'ngrok-skip-browser-warning': 'true'
+          }
+        })
         const data = await player.json()
         console.log(data)
         setScaning(true)
