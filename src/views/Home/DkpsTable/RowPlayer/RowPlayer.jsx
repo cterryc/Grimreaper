@@ -7,6 +7,7 @@ import {
   allGemsList
 } from './RowTables.service'
 import './RowPlayer.css'
+import { Link } from 'react-router-dom'
 // import { useSelector } from 'react-redux'
 // import { extract } from '@extractus/article-extractor'
 
@@ -286,6 +287,15 @@ const RowPlayer = ({
                   })}
                 </div>
               </div>
+              <Link
+                to={`https://armory.warmane.com/character/${
+                  nameCharacter ? nameCharacter : ele.name
+                }/Icecrown/summary`}
+                target='_blank'
+                className='link-warmane'
+              >
+                https://warmane.com/{nameCharacter ? nameCharacter : ele.name}
+              </Link>
             </div>
             <div className='rowplayer-alters'>
               <h1 className='alter-head'>Alters</h1>
@@ -303,12 +313,6 @@ const RowPlayer = ({
                 <h3 onClick={() => fetchInfoPlayer(ele.name)}>{ele.name}</h3>
               )}
             </div>
-            {/* <a
-              href='https://wotlk.ultimowow.com?item=25697&domain=es'
-              rel='ench=2647'
-            >
-              Brazales de acechador vil
-            </a> */}
           </div>
         </div>
       )}

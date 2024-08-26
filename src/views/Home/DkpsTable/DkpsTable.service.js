@@ -43,7 +43,7 @@ let API_BACK
 let VITE_SCRAP
 if (BACK_END) {
   API_BACK = 'http://192.168.18.20:3001'
-  VITE_SCRAP = 'http://192.168.18.20:4001'
+  VITE_SCRAP = 'http://192.168.18.20:4000'
 } else {
   API_BACK = import.meta.env.VITE_API
   VITE_SCRAP = import.meta.env.VITE_SCRAP

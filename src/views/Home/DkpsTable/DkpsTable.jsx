@@ -17,25 +17,10 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   const { alters, mains, loader } = useSelector((state) => state.players)
 
   useEffect(() => {
-    // setLoader(true)
-    // fetch(`${API}/main`)
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    //     const newORderMain = [...result.response]
-    //     const newORderAlter = [...result.alters]
-    //     newORderAlter.sort((a, b) => a.name.localeCompare(b.name))
-    //     newORderMain.sort((a, b) => b.net - a.net)
-    //     dispatch(addMains(newORderMain))
-    //     dispatch(addAlters(newORderAlter))
-    //     setLoader(false)
-    //     setJsonData(newORderMain)
-    //     setRenderData(newORderMain)
-    //   })
-    //   .catch((err) => console.error('Error fetching data:', err))
-    // console.log(mains)
-    if (renderData.length === 0) {
-      setRenderData(mains)
-    }
+    // if (renderData.length === 0) {
+    setRenderData(mains)
+    // }
+    console.log(mains)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mains])
 
@@ -144,7 +129,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
         </div>
       ) : (
         <div className='all-players'>
-          {renderData.map((ele, i) => {
+          {renderData?.map((ele, i) => {
             return (
               <RowPlayer
                 state={alters}
