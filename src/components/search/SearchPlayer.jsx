@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import './SearchPlayer.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  getActual,
+  getFirst,
+  getSecond
+} from '../../redux/actions/actionsCharacters'
 
 const SearchPlayer = ({
   players,
@@ -12,6 +17,8 @@ const SearchPlayer = ({
   const [found, setFound] = useState([])
   const [inputValue, setInputValue] = useState('')
   const [colorH1, setColorH1] = useState({})
+  const [lastDays, setLastDays] = useState(false)
+  const [listDays, setListDays] = useState(false)
   const { date } = useSelector((state) => state.players)
   let hoursMin = ''
   let day = ''
@@ -24,6 +31,8 @@ const SearchPlayer = ({
     month = second
     console.log(date)
   }
+
+  const dispatch = useDispatch()
 
   const find = (e) => {
     e.preventDefault()
@@ -55,6 +64,16 @@ const SearchPlayer = ({
     setInputValue('')
     setFound([])
     setRenderData(resultado)
+  }
+
+  const getDkps = (day) => {
+    if (day === 'actual') {
+      dispatch(getActual())
+    } else if (day === 'undia') {
+      dispatch(getFirst())
+    } else if (day === 'dosdias') {
+      dispatch(getSecond())
+    }
   }
 
   return (
@@ -110,14 +129,32 @@ const SearchPlayer = ({
       )}
       <div className='date-container'>
         <div
+          onMouseLeave={() => {
+            setLastDays(false)
+            setListDays(false)
+          }}
+          onMouseEnter={() => setLastDays(true)}
           onClick={(e) => {
             e.stopPropagation()
-            setButtonShowAddDkp(true)
+            setListDays(true)
           }}
           className='date'
         >
-          <h1>Ultima actualizacion:</h1>
-          <h1>{`${day} de ${month} - ${hoursMin}`}</h1>
+          {lastDays ? (
+            <h1>Ver días anteriores</h1>
+          ) : (
+            <>
+              <h1>Ultima actualizacion:</h1>
+              <h1>{`${day} de ${month} - ${hoursMin}`}</h1>
+            </>
+          )}
+          {listDays && (
+            <div className='list-days'>
+              <button onClick={() => getDkps('actual')}>Actual</button>
+              <button onClick={() => getDkps('undia')}>Hace 1 día</button>
+              <button onClick={() => getDkps('dosdias')}>Hace 2 días</button>
+            </div>
+          )}
         </div>
       </div>
     </div>

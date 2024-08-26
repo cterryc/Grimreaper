@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getMainAndAlters } from '../actions/actionsCharacters'
+import {
+  getActual,
+  getFirst,
+  getMainAndAlters,
+  getSecond
+} from '../actions/actionsCharacters'
 
 const initialState = {
   mains: [],
@@ -51,6 +56,51 @@ export const playerSlice = createSlice({
         state.date = action.payload.date
       })
       .addCase(getMainAndAlters.rejected, (state, action) => {
+        // Aquí puedes manejar el estado cuando la acción es rechazada (error)
+        state.loader = false
+        state.error = action.error.message
+      })
+      .addCase(getActual.pending, (state) => {
+        // Aquí puedes manejar el estado mientras la acción está en curso (cargando)
+        // Puedes mostrar un indicador de carga, por ejemplo
+        state.loader = true
+      })
+      .addCase(getActual.fulfilled, (state, action) => {
+        // Aquí puedes manejar el estado cuando la acción se completa exitosamente
+        state.loader = false
+        state.mains = action.payload
+      })
+      .addCase(getActual.rejected, (state, action) => {
+        // Aquí puedes manejar el estado cuando la acción es rechazada (error)
+        state.loader = false
+        state.error = action.error.message
+      })
+      .addCase(getFirst.pending, (state) => {
+        // Aquí puedes manejar el estado mientras la acción está en curso (cargando)
+        // Puedes mostrar un indicador de carga, por ejemplo
+        state.loader = true
+      })
+      .addCase(getFirst.fulfilled, (state, action) => {
+        // Aquí puedes manejar el estado cuando la acción se completa exitosamente
+        state.loader = false
+        state.mains = action.payload
+      })
+      .addCase(getFirst.rejected, (state, action) => {
+        // Aquí puedes manejar el estado cuando la acción es rechazada (error)
+        state.loader = false
+        state.error = action.error.message
+      })
+      .addCase(getSecond.pending, (state) => {
+        // Aquí puedes manejar el estado mientras la acción está en curso (cargando)
+        // Puedes mostrar un indicador de carga, por ejemplo
+        state.loader = true
+      })
+      .addCase(getSecond.fulfilled, (state, action) => {
+        // Aquí puedes manejar el estado cuando la acción se completa exitosamente
+        state.loader = false
+        state.mains = action.payload
+      })
+      .addCase(getSecond.rejected, (state, action) => {
         // Aquí puedes manejar el estado cuando la acción es rechazada (error)
         state.loader = false
         state.error = action.error.message

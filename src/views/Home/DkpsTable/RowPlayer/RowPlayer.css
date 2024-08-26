@@ -334,3 +334,16 @@
   justify-content: center;
   align-items: center;
 }
+
+.link-warmane {
+  color: #d40000;
+  border: solid 1px #d40000;
+  padding: 0px 8px;
+  border-radius: 10px;
+}
+
+.link-warmane:hover {
+  background-color: #630000;
+  border: solid 1px #630000;
+  color: #fff;
+}
