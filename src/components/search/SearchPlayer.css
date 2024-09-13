@@ -133,7 +133,7 @@
   background-color: #79030393;
   margin: 0px;
   padding: 0px 10px;
-  border: 0px;
+  border: 1px solid rgb(63, 26, 26);
   pointer-events: painted;
   border-radius: 5px;
   font-size: 14px;
@@ -144,10 +144,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); /* sombra */
+  transition: box-shadow 0.3s ease;
 }
 
 .date h1 {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .list-days {
