@@ -187,12 +187,12 @@ const RowPlayer = ({
             <div className='rowplayer-items'>
               <div className='items-container'>
                 <div className='background-elf'>
-                  <h1>
+                  <h1 style={{ fontSize: '20px' }}>
                     {scanning
                       ? nameCharacter
                         ? nameCharacter
                         : `${ele.name}`
-                      : 'Scanning Perfil'}
+                      : 'Scraping personaje de Warmane'}
                   </h1>
                   {!scanning && <span className='scanning-horizontal'></span>}
                 </div>
