@@ -1,41 +1,63 @@
-/* .DkpsTable {
+.DkpsTable {
   position: relative;
-} */
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: rgba(20, 20, 20, 0.7);
+}
 
 .header {
-  height: 50px;
-  /* padding: 0px 50px; */
-
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.5);
+  background-color: rgba(30, 30, 30, 0.8);
+  padding: 0 15px;
 }
 
 .header h1 {
-  font-size: 25px;
+  font-size: 18px;
   width: 200px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
 }
 
 .header button {
-  /* background: none; */
-  padding: 0px;
+  background: none;
+  padding: 10px 15px;
+  border: none;
+  transition: all 0.3s ease;
+  border-radius: 4px;
 }
 
 .all-players {
   display: flex;
   flex-direction: column;
-
   padding-bottom: 30px;
 }
 
 .player {
   display: flex;
   justify-content: space-between;
-  /* background: #86868623; */
   cursor: pointer;
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-  /* position: relative; */
+.player:hover {
+  /* Eliminamos la transformación que causa el desplazamiento */
+  /* transform: translateX(5px); */
+  background-color: rgba(
+    67,
+    0,
+    0,
+    0.57
+  ); /* Mantenemos solo el cambio de color */
 }
 
 .player h1 {
@@ -46,25 +68,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Loader Config */
 .loader-container {
   height: 15vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px 0;
 }
+
 .loader {
   display: block;
   position: relative;
-  height: 18px;
-  width: 80%;
-  border: 1px solid #fff;
-  border-radius: 10px;
+  height: 8px;
+  width: 70%;
+  border: none;
+  border-radius: 4px;
   overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset;
 }
+
 .loader:after {
   content: '';
   position: absolute;
@@ -72,8 +99,9 @@
   top: 0;
   height: 100%;
   width: 0;
-  background: #ff3d00;
+  background: linear-gradient(90deg, #ff3d00, #ff7e00);
   animation: 35s prog ease-in infinite;
+  border-radius: 4px;
 }
 
 @keyframes prog {
