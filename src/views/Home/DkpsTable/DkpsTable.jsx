@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { header, rankPriority } from './DkpsTable.service'
 import './DkpsTable.css'
+import './DkpsTable.header.css'
 import SearchPlayer from '../../../components/search/SearchPlayer'
 import RowPlayer from './RowPlayer/RowPlayer'
 import { useDispatch, useSelector } from 'react-redux'
@@ -117,7 +118,25 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
       <div className='header'>
         {header.map((ele, i) => {
           return (
-            <button id={ele} onClick={order} key={i}>
+            <button
+              id={ele}
+              onClick={order}
+              key={i}
+              className={`header-button ${
+                renderData ===
+                (ele === 'Clase'
+                  ? classOrder()
+                  : ele === 'Personaje'
+                  ? nameOrder()
+                  : ele === 'Rango'
+                  ? rankOrder()
+                  : ele === 'Dkps'
+                  ? dkpsOrder()
+                  : '')
+                  ? 'active'
+                  : ''
+              }`}
+            >
               <h1 key={i}>{ele}</h1>
             </button>
           )
