@@ -2,10 +2,13 @@
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  background-color: rgba(20, 20, 20, 0.7);
+  border-radius: 12px;
+  overflow: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  background-color: rgba(10, 12, 14, 0.95);
+  border: 1px solid rgba(200, 155, 60, 0.3);
+  backdrop-filter: blur(2px);
+  max-height: 90vh;
 }
 
 .header {
@@ -13,8 +16,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 0, 0, 0.5);
-  background-color: rgba(30, 30, 30, 0.8);
+  border-bottom: 2px solid #c89b3c;
+  background-color: #1a1c22;
   padding: 0 15px;
 }
 
@@ -23,6 +26,8 @@
   width: 200px;
   font-weight: 600;
   letter-spacing: 0.5px;
+  color: #f0e6d2;
+  font-family: 'Cinzel', serif;
   transition: color 0.2s ease;
 }
 
@@ -32,12 +37,47 @@
   border: none;
   transition: all 0.3s ease;
   border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.header button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c89b3c, transparent);
+  transition:
+    width 0.3s ease,
+    left 0.3s ease;
+}
+
+.header button:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.header button:hover h1 {
+  color: #c89b3c;
+}
+
+.header button.active::after {
+  width: 80%;
+  left: 10%;
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+}
+
+.header button.active h1 {
+  color: #ffd700;
 }
 
 .all-players {
   display: flex;
   flex-direction: column;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 .player {
@@ -45,24 +85,22 @@
   justify-content: space-between;
   cursor: pointer;
   padding: 12px 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-bottom: 1px solid rgba(200, 155, 60, 0.1);
+  transition:
+    background-color 0.3s ease,
+    border-left 0.2s ease;
+  background-color: transparent;
+  border-left: 3px solid transparent;
 }
 
 .player:hover {
-  /* Eliminamos la transformación que causa el desplazamiento */
-  /* transform: translateX(5px); */
-  background-color: rgba(
-    67,
-    0,
-    0,
-    0.57
-  ); /* Mantenemos solo el cambio de color */
+  background-color: rgba(200, 155, 60, 0.1);
+  border-left-color: #c89b3c;
 }
 
 .player h1 {
   font-size: 16px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 200px;
   height: 24px;
   display: flex;
@@ -71,7 +109,7 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Loader Config */
+/* Loader Config - estilo barra de experiencia */
 .loader-container {
   height: 15vh;
   display: flex;
@@ -83,13 +121,13 @@
 .loader {
   display: block;
   position: relative;
-  height: 8px;
+  height: 12px;
   width: 70%;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+  background-color: #2a2c33;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .loader:after {
@@ -99,13 +137,46 @@
   top: 0;
   height: 100%;
   width: 0;
-  background: linear-gradient(90deg, #ff3d00, #ff7e00);
-  animation: 35s prog ease-in infinite;
-  border-radius: 4px;
+  background: linear-gradient(90deg, #c89b3c, #ffd700, #c89b3c);
+  background-size: 200% 100%;
+  animation:
+    prog 2s ease-in infinite,
+    shimmer 1.5s linear infinite;
+  border-radius: 6px;
 }
 
 @keyframes prog {
-  to {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
     width: 100%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .header h1 {
+    font-size: 14px;
+    width: auto;
+    flex: 1;
+    text-align: center;
+  }
+  .player h1 {
+    font-size: 13px;
+    width: auto;
+    flex: 1;
+    text-align: center;
   }
 }
