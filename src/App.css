@@ -20,19 +20,6 @@
   }
 }
 
-/* .App {
-  width: 100vw;
-  height: 100vh;
-  overflow-x: hidden;
-  background-image: url('./assets/651986.jpg');
-  background-position: center center;
-  background-size: cover;
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-} */
-
 .App {
   width: 100vw;
   height: 100vh;
@@ -45,12 +32,13 @@
 
 .App::before {
   content: '';
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('./assets/651986.jpg');
   background-position: center center;
   background-size: cover;

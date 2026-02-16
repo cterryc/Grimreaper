@@ -7,14 +7,13 @@ import RowPlayer from './RowPlayer/RowPlayer'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMainAndAlters } from '../../../redux/actions/actionsCharacters'
 
-const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
+const DkpsTable = ({ showAddDKP, setButtonShowAddDkp, onPlayerSelect }) => {
   // const [jsonData] = useState([])
   const [renderData, setRenderData] = useState([])
   // const [loader, setLoader] = useState(false)
   const [greenColor, setGreenColor] = useState('')
   const playerRefs = useRef({})
   const hasInitialized = useRef(false)
-  const [showAlters, setShowAlters] = useState(false)
   const dispatch = useDispatch()
   const { alters, mains, loader } = useSelector((state) => state.players)
 
@@ -111,7 +110,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   }
 
   return (
-    <div onClick={() => setShowAlters(false)} className='DkpsTable'>
+    <div className='DkpsTable'>
       <SearchPlayer
         setButtonShowAddDkp={setButtonShowAddDkp}
         showAddDKP={showAddDKP}
@@ -162,8 +161,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
                 playerRefs={playerRefs}
                 greenColor={greenColor}
                 setGreenColor={setGreenColor}
-                showAlters={showAlters}
-                setShowAlters={setShowAlters}
+                onPlayerClick={onPlayerSelect}
               />
             )
           })}
