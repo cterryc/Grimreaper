@@ -13,6 +13,7 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   // const [loader, setLoader] = useState(false)
   const [greenColor, setGreenColor] = useState('')
   const playerRefs = useRef({})
+  const hasInitialized = useRef(false)
   const [showAlters, setShowAlters] = useState(false)
   const dispatch = useDispatch()
   const { alters, mains, loader } = useSelector((state) => state.players)
@@ -26,7 +27,10 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
   }, [mains])
 
   useEffect(() => {
-    dispatch(getMainAndAlters())
+    if (!hasInitialized.current) {
+      hasInitialized.current = true
+      dispatch(getMainAndAlters())
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -127,12 +131,12 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp }) => {
                 (ele === 'Clase'
                   ? classOrder()
                   : ele === 'Personaje'
-                  ? nameOrder()
-                  : ele === 'Rango'
-                  ? rankOrder()
-                  : ele === 'Dkps'
-                  ? dkpsOrder()
-                  : '')
+                    ? nameOrder()
+                    : ele === 'Rango'
+                      ? rankOrder()
+                      : ele === 'Dkps'
+                        ? dkpsOrder()
+                        : '')
                   ? 'active'
                   : ''
               }`}

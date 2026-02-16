@@ -1,15 +1,8 @@
-import { useState } from 'react'
-import { APISCRAP, selectColor } from '../DkpsTable.service'
-import {
-  itemsLeft,
-  itemsBottom,
-  itemsRight,
-  allGemsList
-} from './RowTables.service'
+import { useState, useCallback, useEffect, useRef, memo } from 'react'
+import { selectColor } from '../DkpsTable.service'
+import { itemsLeft, itemsBottom, itemsRight } from './RowTables.service'
+import { usePlayerInfo } from './usePlayerInfo'
 import './RowPlayer.css'
-import { Link } from 'react-router-dom'
-// import { useSelector } from 'react-redux'
-// import { extract } from '@extractus/article-extractor'
 
 const RowPlayer = ({
   ele,
@@ -21,165 +14,124 @@ const RowPlayer = ({
   setShowAlters,
   state
 }) => {
-  const [color, setColor] = useState(i % 2 !== 0 && '#86868623')
-  const [scanning, setScaning] = useState(false)
-  const [nameCharacter, setNameCharacter] = useState('')
-  const [infoPlayer, setInfoPlayer] = useState({
-    left: [],
-    right: [],
-    bottom: []
-  })
+  const [color, setColor] = useState(i % 2 !== 0 ? '#86868623' : '')
+  const greenColorTimeoutRef = useRef(null)
+  const {
+    scanning,
+    playerName,
+    playerInfo,
+    error,
+    fetchPlayerInfo,
+    resetPlayerInfo,
+    getItemData
+  } = usePlayerInfo()
 
+  // Filter alters for this player
   const alters = state.filter((eleAlter) => {
     return ele.name === eleAlter.mainPlayername
   })
 
-  const rowColor = (e) => {
-    if (e) {
-      setColor('#43000091')
-    } else {
-      setColor(i % 2 !== 0 && '#86868623')
-    }
-  }
-
-  const fetchInfoPlayer = async (namePlayer) => {
-    if (namePlayer !== ele.name && namePlayer) {
-      console.log('entro en namePlayer', namePlayer)
-      try {
-        if (scanning) {
-          setScaning(false)
-        }
-        setNameCharacter(namePlayer)
-        const player = await fetch(`${APISCRAP}/api/${namePlayer}`, {
-          method: 'GET',
-          headers: {
-            'ngrok-skip-browser-warning': 'true'
-          }
-        })
-        const data = await player.json()
-        console.log(data)
-        setScaning(true)
-        setInfoPlayer({
-          left: data.left,
-          right: data.right,
-          bottom: data.bottom
-        })
-      } catch (error) {
-        console.error('Error fetching player data:', error)
-      }
-    } else {
-      console.log('entro en ele.name', ele.name)
-      try {
-        if (scanning) {
-          setScaning(false)
-        }
-        if (nameCharacter) {
-          setNameCharacter('')
-        }
-        const player = await fetch(`${APISCRAP}/api/${ele.name}`, {
-          method: 'GET',
-          headers: {
-            'ngrok-skip-browser-warning': 'true'
-          }
-        })
-        const data = await player.json()
-        console.log(data)
-        setScaning(true)
-        setInfoPlayer({
-          left: data.left,
-          right: data.right,
-          bottom: data.bottom
-        })
-      } catch (error) {
-        console.error('Error fetching player data:', error)
+  // Cleanup green color timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (greenColorTimeoutRef.current) {
+        clearTimeout(greenColorTimeoutRef.current)
       }
     }
-  }
+  }, [])
 
-  const getItemId = (index, side) => {
-    try {
-      const itemId = infoPlayer[side][index]?.rel?.split('&')
-      let ench = ''
-      let gems = ''
-      if (!itemId[1]) {
-        return { id: itemId[0], ench, gems }
+  // Cleanup refs on unmount
+  useEffect(() => {
+    const playerName = ele.name
+    const current = playerRefs.current
+    return () => {
+      if (current[playerName]) {
+        delete current[playerName]
       }
-      if (itemId[1]) {
-        console.log('entro cuando ==>', itemId)
-        if (itemId[1][0] === 'e') {
-          ench = itemId[1]
-        } else if (itemId[1][0] === 'g') {
-          const allGems = itemId[1]?.split('=')
-          const idGems = allGems[1]?.split(':')
-          console.log(idGems)
-          const gem1 = idGems[0]
-          const gem2 = idGems[1]
-          const gem3 = idGems[2]
-          gems = `gems=${gem1 !== 0 ? allGemsList[gem1] : 0}:${
-            gem2 !== 0 ? allGemsList[gem2] : 0
-          }:${gem3 !== 0 ? allGemsList[gem3] : 0}`
-          // gems = itemId[1]
-        }
-      }
-      if (itemId[2]) {
-        if (itemId[2][0] === 'g') {
-          const allGems = itemId[2]?.split('=')
-          const idGems = allGems[1]?.split(':')
-          const gem1 = idGems[0]
-          const gem2 = idGems[1]
-          const gem3 = idGems[2]
-          gems = `gems=${gem1 !== 0 ? allGemsList[gem1] : 0}:${
-            gem2 !== 0 ? allGemsList[gem2] : 0
-          }:${gem3 !== 0 ? allGemsList[gem3] : 0}`
-          // gems = itemId[2]
-        }
-      }
-      console.log({ id: itemId[0], ench, gems })
-      return { id: itemId[0], ench, gems }
-    } catch (error) {
-      console.log(error)
     }
-  }
+  }, [ele.name, playerRefs])
 
-  const changetGreenColor = () => {
+  const handleRowColorChange = useCallback(
+    (isHovering) => {
+      if (isHovering) {
+        setColor('#43000091')
+      } else {
+        setColor(i % 2 !== 0 ? '#86868623' : '')
+      }
+    },
+    [i]
+  )
+
+  const handlePlayerClick = useCallback(() => {
+    console.log('ele name', ele.name)
+
+    fetchPlayerInfo(ele.name)
+    setShowAlters(i)
+  }, [ele.name, i, fetchPlayerInfo, setShowAlters])
+
+  const handleAlterClick = useCallback(
+    (alterName) => {
+      fetchPlayerInfo(alterName)
+    },
+    [fetchPlayerInfo]
+  )
+
+  const handleRetryFetch = useCallback(() => {
+    if (playerName) {
+      fetchPlayerInfo(playerName)
+    }
+  }, [playerName, fetchPlayerInfo])
+
+  const handleCloseAlters = useCallback(() => {
+    setShowAlters(null)
+    resetPlayerInfo()
+  }, [setShowAlters, resetPlayerInfo])
+
+  const getBackgroundColor = useCallback(() => {
     if (greenColor === ele.name) {
-      setTimeout(() => {
+      greenColorTimeoutRef.current = setTimeout(() => {
         setGreenColor('')
       }, 3000)
+      return '#008104'
     }
-    return '#008104'
-  }
+    return color
+  }, [greenColor, ele.name, color, setGreenColor])
+
+  const displayPlayerName = playerName || ele.name
 
   return (
     <div
       ref={(el) => (playerRefs.current[ele.name] = el)}
       style={{
-        backgroundColor:
-          (greenColor === ele.name && changetGreenColor()) || color,
+        backgroundColor: getBackgroundColor(),
         transition: 'all 0.3s ease'
       }}
       className='player'
-      key={i}
       id={ele.name}
       onClick={(e) => {
         e.stopPropagation()
-        rowColor()
-        fetchInfoPlayer()
-        setShowAlters(i)
+        handlePlayerClick()
       }}
-      onMouseEnter={(e) => rowColor(e)}
-      onMouseLeave={() => rowColor()}
+      onMouseEnter={() => handleRowColorChange(true)}
+      onMouseLeave={() => handleRowColorChange(false)}
+      role='button'
+      tabIndex={0}
     >
       <h1 style={{ color: selectColor(ele.class, ele) }}>{ele.name}</h1>
       <h1 style={{ color: selectColor(ele.class) }}>{ele.class}</h1>
       <h1 style={{ color: selectColor(ele.class) }}>{ele.rank}</h1>
       <h1 style={{ color: selectColor(ele.class) }}>{ele.net}</h1>
       {showAlters === i && (
-        <div onClick={(e) => e.stopPropagation()} className='player-alters'>
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className='player-alters'
+          role='dialog'
+        >
           <h1>{ele.name}</h1>
           <button
             className='player-alters-button'
-            onClick={() => setShowAlters(!showAlters)}
+            onClick={handleCloseAlters}
+            aria-label='Close player details'
           >
             X
           </button>
@@ -189,113 +141,47 @@ const RowPlayer = ({
                 <div className='background-elf'>
                   <h1 style={{ fontSize: '20px' }}>
                     {scanning
-                      ? nameCharacter
-                        ? nameCharacter
-                        : `${ele.name}`
-                      : 'Scraping personaje de Warmane'}
+                      ? 'Scraping personaje de Warmane'
+                      : displayPlayerName}
                   </h1>
-                  {!scanning && <span className='scanning-horizontal'></span>}
+                  {scanning && <span className='scanning-horizontal'></span>}
                 </div>
-                <div className='left-side'>
-                  {itemsLeft.map((ele, index) => {
-                    return (
-                      <div className={ele} key={index}>
-                        {scanning ? (
-                          <a
-                            href={`https://wotlk.ultimowow.com?${
-                              getItemId(index, 'left')?.id
-                            }&domain=es`}
-                            className='item-show'
-                            rel={`${getItemId(index, 'left')?.gems}&amp;${
-                              getItemId(index, 'left')?.ench
-                            }`}
-                          >
-                            {infoPlayer.left[index]?.src ? (
-                              <img
-                                src={infoPlayer.left[index]?.src}
-                                alt={ele}
-                              />
-                            ) : (
-                              <span className='no-equiped'>No Equiped</span>
-                            )}
-                          </a>
-                        ) : (
-                          <span className='scanning-circle'></span>
-                        )}
-                      </div>
-                    )
-                  })}
-                </div>
-                <div className='right-side'>
-                  {itemsRight.map((ele, index) => {
-                    return (
-                      <div className={ele} key={index}>
-                        {scanning ? (
-                          <a
-                            href={`https://wotlk.ultimowow.com?${
-                              getItemId(index, 'right')?.id
-                            }&domain=es`}
-                            className='item-show'
-                            rel={`${getItemId(index, 'right')?.gems}&amp;${
-                              getItemId(index, 'right')?.ench
-                            }`}
-                          >
-                            {infoPlayer.right[index]?.src ? (
-                              <img
-                                src={infoPlayer.right[index]?.src}
-                                alt={ele}
-                              />
-                            ) : (
-                              <span className='no-equiped'>No Equiped</span>
-                            )}
-                          </a>
-                        ) : (
-                          <span className='scanning-circle'></span>
-                        )}
-                      </div>
-                    )
-                  })}
-                </div>
-                <div className='bottom-side'>
-                  {itemsBottom.map((ele, index) => {
-                    return (
-                      <div className={ele} key={index}>
-                        {scanning ? (
-                          <a
-                            href={`https://wotlk.ultimowow.com?${
-                              getItemId(index, 'bottom')?.id
-                            }&domain=es`}
-                            className='item-show'
-                            rel={`${getItemId(index, 'bottom')?.gems}&amp;${
-                              getItemId(index, 'bottom')?.ench
-                            }`}
-                          >
-                            {infoPlayer.bottom[index]?.src ? (
-                              <img
-                                src={infoPlayer.bottom[index]?.src}
-                                alt={ele}
-                              />
-                            ) : (
-                              <span className='no-equiped'>No Equiped</span>
-                            )}
-                          </a>
-                        ) : (
-                          <span className='scanning-circle'></span>
-                        )}
-                      </div>
-                    )
-                  })}
-                </div>
+                {error ? (
+                  <ErrorDisplay onRetry={handleRetryFetch} />
+                ) : (
+                  <>
+                    <ItemSlotsRenderer
+                      itemsArray={itemsLeft}
+                      playerItems={playerInfo.left}
+                      side='left'
+                      getItemData={getItemData}
+                      scanning={scanning}
+                    />
+                    <ItemSlotsRenderer
+                      itemsArray={itemsRight}
+                      playerItems={playerInfo.right}
+                      side='right'
+                      getItemData={getItemData}
+                      scanning={scanning}
+                    />
+                    <ItemSlotsRenderer
+                      itemsArray={itemsBottom}
+                      playerItems={playerInfo.bottom}
+                      side='bottom'
+                      getItemData={getItemData}
+                      scanning={scanning}
+                    />
+                  </>
+                )}
               </div>
-              <Link
-                to={`https://armory.warmane.com/character/${
-                  nameCharacter ? nameCharacter : ele.name
-                }/Icecrown/summary`}
+              <a
+                href={`https://armory.warmane.com/character/${displayPlayerName}/Icecrown/summary`}
                 target='_blank'
+                rel='noopener noreferrer'
                 className='link-warmane'
               >
-                https://warmane.com/{nameCharacter ? nameCharacter : ele.name}
-              </Link>
+                https://warmane.com/{displayPlayerName}
+              </a>
             </div>
             <div className='rowplayer-alters'>
               <h1 className='alter-head'>Alters</h1>
@@ -303,14 +189,32 @@ const RowPlayer = ({
                 return (
                   <h3
                     key={index}
-                    onClick={() => fetchInfoPlayer(elemento.name)}
+                    onClick={() => handleAlterClick(elemento.name)}
+                    role='button'
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        handleAlterClick(elemento.name)
+                      }
+                    }}
                   >
                     {elemento.name}
                   </h3>
                 )
               })}
-              {nameCharacter && (
-                <h3 onClick={() => fetchInfoPlayer(ele.name)}>{ele.name}</h3>
+              {playerName && playerName !== ele.name && (
+                <h3
+                  onClick={() => handleAlterClick(ele.name)}
+                  role='button'
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      handleAlterClick(ele.name)
+                    }
+                  }}
+                >
+                  {ele.name}
+                </h3>
               )}
             </div>
           </div>
@@ -319,5 +223,75 @@ const RowPlayer = ({
     </div>
   )
 }
+
+/**
+ * Error display component when player is not found
+ */
+const ErrorDisplay = memo(({ onRetry }) => {
+  return (
+    <div className='error-container'>
+      <div className='error-icon'>⚠️</div>
+      <h2 className='error-title'>Personaje no encontrado</h2>
+      <p className='error-message'>
+        El personaje cambió de nombre. Por favor, verificar dentro del juego o
+        en la plataforma Warmane.
+      </p>
+      <button
+        className='error-retry-button'
+        onClick={onRetry}
+        aria-label='Intentar de nuevo'
+      >
+        Intentar de nuevo
+      </button>
+    </div>
+  )
+})
+
+ErrorDisplay.displayName = 'ErrorDisplay'
+
+/**
+ * Sub-component for rendering item slots - memoized for performance
+ */
+const ItemSlotsRenderer = memo(
+  ({ itemsArray, playerItems, side, getItemData, scanning }) => {
+    const sideClassName = {
+      left: 'left-side',
+      right: 'right-side',
+      bottom: 'bottom-side'
+    }[side]
+
+    return (
+      <div className={sideClassName}>
+        {itemsArray.map((slotName, index) => {
+          const itemData = getItemData(index, side)
+          const item = playerItems?.[index]
+          const hasImage = item?.src
+
+          return (
+            <div className={slotName} key={index}>
+              {!scanning ? (
+                <a
+                  href={`https://wotlk.ultimowow.com?${itemData.id}&domain=es`}
+                  className='item-show'
+                  rel={`${itemData.gems}&amp;${itemData.ench}`}
+                >
+                  {hasImage ? (
+                    <img src={item.src} alt={slotName} />
+                  ) : (
+                    <span className='no-equiped'>No Equiped</span>
+                  )}
+                </a>
+              ) : (
+                <span className='scanning-circle'></span>
+              )}
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+)
+
+ItemSlotsRenderer.displayName = 'ItemSlotsRenderer'
 
 export default RowPlayer
