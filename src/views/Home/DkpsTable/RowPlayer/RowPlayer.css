@@ -548,27 +548,6 @@
   }
 
   /* Ajustes para los slots específicos si es necesario */
-  .head,
-  .neck,
-  .shoulders,
-  .back,
-  .chest,
-  .shirt,
-  .tabard,
-  .wrist,
-  .hands,
-  .waist,
-  .legs,
-  .feet,
-  .fingerOne,
-  .fingerTwo,
-  .trinketOne,
-  .trinketTwo,
-  .mainHand,
-  .offHand,
-  .relic {
-    /* No se requiere cambio específico, heredan del grid */
-  }
 
   .error-container {
     padding: 15px;
