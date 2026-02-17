@@ -77,7 +77,7 @@ const SearchPlayer = ({
   }
 
   return (
-    <div className='searchplayer-form-container'>
+    <div className='searchplayer-form-container mt-4'>
       <form className='searchplayer-form' onSubmit={onSubmitForm}>
         <div>
           <input
@@ -127,7 +127,7 @@ const SearchPlayer = ({
           </button>
         </div>
       )}
-      <div className='date-container'>
+      {/* <div className='date-container'>
         <div
           onMouseLeave={() => {
             setLastDays(false)
@@ -156,7 +156,7 @@ const SearchPlayer = ({
             </div>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

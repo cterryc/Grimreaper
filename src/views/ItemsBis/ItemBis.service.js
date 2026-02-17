@@ -32,7 +32,7 @@ export const englishListItemsBis = {
       drop: 'Halion'
     },
     'Bile-encrusted Medallion': {
-      class: ['War Prot', 'Pala Prot', 'Dk Blood Tank', 'Druid Bear'],
+      class: ['Warr Prot', 'Pala Prot', 'Dk Blood Tank', 'Druid Bear'],
       id: '50682',
       img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrownnecklaceb.jpg',
       drop: 'Carapútrea'
@@ -207,7 +207,7 @@ export const englishListItemsBis = {
       drop: 'Tuetano'
     },
     'Coldwraith Links': {
-      class: ['Warrior Fury', 'Dk Uh'],
+      class: ['Warr Fury', 'Dk Uh'],
       id: '50620',
       img: 'https://wow.zamimg.com/images/wow/icons/large/inv_belt_63.jpg',
       drop: 'Valithria'
@@ -292,7 +292,7 @@ export const englishListItemsBis = {
   },
   Ring: {
     'Ring of Phased Regeneration': {
-      class: ['Rshamy', 'Hpala', 'Rdudu'],
+      class: ['Rshamy', 'Hpala', 'Druid Rest'],
       id: '54585',
       img: 'https://wow.zamimg.com/images/wow/icons/large/item_icecrownringb.jpg',
       drop: 'Halion'
@@ -422,7 +422,7 @@ export const englishListItemsBis = {
       drop: 'LK'
     },
     Shadowmourne: {
-      class: ['War Fury', 'Pala Ret', 'Dk Uh'],
+      class: ['Warr Fury', 'Pala Ret', 'Dk Uh'],
       id: '49623',
       img: 'https://wow.zamimg.com/images/wow/icons/large/inv_axe_113.jpg',
       drop: 'Quest'
@@ -468,7 +468,7 @@ export const spanishListItemsBis = {
     'Amuleto de la elegía silenciosa': ['Shadow P', 'Warlock'],
     'Colgante de lobreguez': ['Warr Fury', 'Dk Uh', 'Pala Ret'],
     'Medallón con bilis incrustada': [
-      'War Prot',
+      'Warr Prot',
       'Pala Prot',
       'Dk Blood Tank',
       'Druid Bear'
@@ -544,7 +544,7 @@ export const spanishListItemsBis = {
       'Mage',
       'Druid Balance'
     ],
-    'Ligas de geliespectro': ['Warrior Fury', 'Dk Uh'],
+    'Ligas de geliespectro': ['Warr Fury', 'Dk Uh'],
     'Guardapolvo ensangrentado del profesor': ['Druid Rest']
   },
   Legs: {
@@ -578,7 +578,7 @@ export const spanishListItemsBis = {
     'Avanzado del Apocalipsis': ['Warr Fury', 'Dk Uh', 'Pala Ret']
   },
   Ring: {
-    'Anillo de regeneración por fase': ['Rshamy', 'Hpala', 'Rdudu'],
+    'Anillo de regeneración por fase': ['Rshamy', 'Hpala', 'Druid Rest'],
     'Anillo de rápido ascenso': ['Shadow P', 'Disci', 'Druid Balance'],
     'El otro sello de Valanar': ['Warlock'],
     'Aro del laberinto interminable': ['Mage'],
@@ -646,7 +646,7 @@ export const spanishListItemsBis = {
       'Druid Cat',
       'Druid Bear'
     ],
-    'Agonía de Sombras': ['War Fury', 'Pala Ret', 'Dk Uh'],
+    'Agonía de Sombras': ['Warr Fury', 'Pala Ret', 'Dk Uh'],
     'Glorenzelg, alta hoja de la Mano de Plata': ['Dk Blood Tank', 'Dk Uh'],
     'Huso de seda de las Sombras': [
       'Disci',
@@ -658,3 +658,29 @@ export const spanishListItemsBis = {
     'Reloj de sol del anochecer eterno': ['Druid Rest']
   }
 }
+
+export const colorsClass = [
+  { color: '#8788EE', class: 'Brujo', type: ['Warlock'] },
+  {
+    color: '#C41E3A',
+    class: 'Caballero de la Muerte',
+    type: ['Dk Blood Tank', 'Dk Uh']
+  },
+  { color: '#AAD372', class: 'Cazador', type: ['Hunter'] },
+  { color: '#0070DD', class: 'Chamán', type: ['Rshamy'] },
+  {
+    color: '#FF7C0A',
+    class: 'Druida',
+    type: ['Druid Balance', 'Druid Rest', 'Druid Cat', 'Druid Bear', 'Balance']
+  },
+  { color: '#C69B6D', class: 'Guerrero', type: ['Warr Fury', 'Warr Prot'] },
+  { color: '#3FC7EB', class: 'Mago', type: ['Mage'] },
+  { color: '#3FC7EB', class: 'Maga', type: ['Mage'] },
+  {
+    color: '#F48CBA',
+    class: 'Paladín',
+    type: ['Pala Ret', 'Pala Prot', 'Hpala']
+  },
+  { color: '#FFF468', class: 'Pícaro', type: ['Rogue', 'Rogue Combat'] },
+  { color: '#FFFFFF', class: 'Sacerdote', type: ['Shadow P', 'Disci'] }
+]

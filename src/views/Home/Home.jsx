@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import HeroSection from '../../components/HeroSection/HeroSection'
+import InformationGrid from '../../components/InformationGrid/InformationGrid'
 import AddDkp from '../../components/AddDKP/AddDkp'
 import DkpsTable from './DkpsTable/DkpsTable'
 import PlayerModal from './DkpsTable/RowPlayer/PlayerModal'
@@ -14,11 +16,22 @@ const Home = ({ showAddDKP }) => {
 
   return (
     <div className='Home'>
-      <DkpsTable
-        showAddDKP={showAddDKP}
-        setButtonShowAddDkp={setButtonShowAddDkp}
-        onPlayerSelect={setSelectedPlayer}
-      />
+      <div className='flex w-full flex-col items-center'>
+        <div className='flex w-full max-w-7xl flex-col p-4 sm:p-6 lg:p-8'>
+          <HeroSection />
+
+          <section id='dkp' className='mb-12'>
+            <DkpsTable
+              showAddDKP={showAddDKP}
+              setButtonShowAddDkp={setButtonShowAddDkp}
+              onPlayerSelect={setSelectedPlayer}
+            />
+          </section>
+
+          <InformationGrid />
+        </div>
+      </div>
+
       {buttonShowAddDkp && <AddDkp setButtonShowAddDkp={setButtonShowAddDkp} />}
       {selectedPlayer && (
         <PlayerModal

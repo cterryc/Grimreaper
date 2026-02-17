@@ -1,14 +1,15 @@
+@import 'tailwindcss';
+
 .DkpsTable {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
   border-radius: 12px;
-  overflow: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   background-color: rgba(10, 12, 14, 0.95);
   border: 1px solid rgba(200, 155, 60, 0.3);
   backdrop-filter: blur(2px);
-  max-height: 90vh;
+  /* max-height: 90vh; */
 }
 
 .header {
@@ -75,9 +76,12 @@
 }
 
 .all-players {
+  @apply md:h-[75dvh] h-[60vh];
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
+  overflow: auto;
+  /* height: 75dvh; */
 }
 
 .player {

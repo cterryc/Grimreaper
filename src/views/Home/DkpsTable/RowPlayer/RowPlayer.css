@@ -466,3 +466,125 @@
   max-height: 550px;
   overflow-x: hidden;
 }
+
+/* Ajustes responsive para móviles (375px - 480px) */
+@media (max-width: 480px) {
+  .player-alters {
+    padding: 12px;
+    width: 100%;
+  }
+
+  .player-alters h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  .player-alters-button {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    right: 10px;
+    top: 10px;
+  }
+
+  .rowplayer-info-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .items-container {
+    grid-template-columns: repeat(
+      5,
+      1fr
+    ); /* Usa fracciones en lugar de píxeles fijos */
+    gap: 3px;
+    padding: 10px;
+  }
+
+  .left-side div,
+  .right-side div,
+  .bottom-side div {
+    aspect-ratio: 1 / 1;
+    min-width: 0; /* Evita desbordamientos */
+  }
+
+  .background-elf {
+    grid-column: 2 / 5;
+    padding: 8px;
+  }
+
+  .background-elf h1 {
+    font-size: 14px;
+  }
+
+  .no-equiped {
+    font-size: 8px;
+  }
+
+  .link-warmane {
+    padding: 8px 16px;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .rowplayer-alters {
+    max-height: 300px; /* Limita altura de alters en móvil */
+    padding: 12px;
+  }
+
+  .rowplayer-alters h1.alter-head {
+    font-size: 18px;
+  }
+
+  .rowplayer-alters h3 {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .alters-container {
+    max-height: 250px;
+  }
+
+  /* Ajustes para los slots específicos si es necesario */
+
+  .error-container {
+    padding: 15px;
+  }
+
+  .error-icon {
+    font-size: 32px;
+  }
+
+  .error-title {
+    font-size: 18px;
+  }
+
+  .error-message {
+    font-size: 12px;
+  }
+
+  .error-retry-button {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Ajuste extra para pantallas muy pequeñas (hasta 375px) */
+@media (max-width: 375px) {
+  .items-container {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    padding: 8px;
+  }
+
+  .background-elf h1 {
+    font-size: 12px;
+  }
+
+  .rowplayer-alters h3 {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}

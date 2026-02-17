@@ -1,18 +1,15 @@
 import { useState } from 'react'
-import { englishListItemsBis, spanishListItemsBis } from './ItemBis.service'
+import {
+  englishListItemsBis,
+  spanishListItemsBis,
+  colorsClass
+} from './ItemBis.service'
 import { useEffect } from 'react'
-import './ItemBis.css'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 const slotSpanish = Object.keys(spanishListItemsBis)
-// console.log(slotSpanish)
 const valuesSpanish = Object.values(spanishListItemsBis)
-// console.log(valuesSpanish)
-
-// const slotEnglish = Object.keys(englishListItemsBis)
-// console.log(slotEnglish)
 const valuesEnglish = Object.values(englishListItemsBis)
-// console.log(valuesEnglish)
 
 const ItemBis = () => {
   const [slotSelected, setSlotSelected] = useState(0)
@@ -24,14 +21,11 @@ const ItemBis = () => {
   const navigate = useNavigate()
   const [loader, setLoader] = useState(false)
 
-  // console.log('esto es items ??>', items.class)
-
   useEffect(() => {
     navigate('/itembis/Neck')
     setTimeout(() => {
       setLoader(true)
     }, 500)
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -51,91 +45,99 @@ const ItemBis = () => {
   }, [slotSelected, language])
 
   const changeSlot = (i) => {
-    console.log(i)
     setSlotSelected(i)
   }
 
   return (
-    <div className='item-bis'>
-      <ul className='slot-container'>
-        {slotSpanish.map((itemSlot, i) => {
-          return (
-            <NavLink
-              className={({ isActive }) => (isActive ? 'slot-active' : 'slot')}
-              onClick={() => changeSlot(i)}
-              key={i}
-              to={`${itemSlot}`}
-            >
-              {itemSlot}
-            </NavLink>
-          )
-        })}
+    <div className='w-full relative flex flex-col md:flex-row justify-center gap-5 mt-20 px-4'>
+      {/* Lista de slots (izquierda) */}
+      <ul className='p-0 flex flex-col items-start m-0 w-full md:w-48'>
+        {slotSpanish.map((itemSlot, i) => (
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? 'h-10 w-full md:w-48 pl-5 border-b border-r border-[#818181] font-bold bg-[#ffffffc9] text-[#000000d5] flex justify-start items-center no-underline'
+                : 'h-10 w-full md:w-48 pl-5 border-b border-r border-[#818181] font-bold text-white bg-[rgba(87,87,87,0.637)] flex justify-start items-center no-underline hover:bg-[#424242] active:bg-red-600 cursor-pointer'
+            }
+            onClick={() => changeSlot(i)}
+            key={i}
+            to={`${itemSlot}`}
+          >
+            {itemSlot}
+          </NavLink>
+        ))}
       </ul>
+
+      {/* Botón de idioma */}
+      <div className='flex justify-center w-auto md:absolute right-5 top-1 p-1 z-100'>
+        <button
+          onClick={() => setLanguage(!language)}
+          className='w-25 flex text-xl h-10 items-center justify-center p-0 bg-blue-600 text-white rounded'
+        >
+          {language ? 'English' : 'Spanish'}
+        </button>
+      </div>
+
       {loader ? (
         <>
-          <ul className='items-names-container'>
-            {items &&
-              items.names.map((itemName, i) => {
-                return (
-                  <div className='items-names' key={i}>
-                    <a
-                      href={`https://wotlk.ultimowow.com?item=${
-                        items.class[i].id
-                      }&domain=${!language ? 'en' : 'es'}`}
-                      style={{
-                        height: '57px'
-                      }}
-                    >
-                      <img
-                        style={{
-                          border:
-                            (itemName === 'Agonía de Sombras' ||
-                              itemName === 'Shadowmourne') &&
-                            'solid 2px rgb(197 73 0)'
-                        }}
-                        src={items.class[i].img}
-                        alt={itemName}
-                      />
-                    </a>
-                    <li>{itemName}</li>
+          {/* Grid de tres columnas responsive */}
+          <div className='grid grid-cols-1 gap-4 max-w-2xl w-full'>
+            {/* Columna 1: nombres de items */}
+            <ul className='flex gap-2.5 my-0 md:my-10 p-0 flex-col'>
+              {items &&
+                items.names.map((itemName, i) => (
+                  <div
+                    className="flex items-center border-t border-white w-full text-sm md:text-lg font-['Franklin_Gothic_Medium','Arial_Narrow',Arial,sans-serif] p-0 flex-col gap-5"
+                    key={i}
+                  >
+                    <div className="flex h-14 items-center border-t border-white w-full text-sm md:text-lg font-['Franklin_Gothic_Medium','Arial_Narrow',Arial,sans-serif] p-0">
+                      <a
+                        href={`https://wotlk.ultimowow.com?item=${items.class[i].id}&domain=${!language ? 'en' : 'es'}`}
+                        className='h-14'
+                      >
+                        <img
+                          style={{
+                            border:
+                              (itemName === 'Agonía de Sombras' ||
+                                itemName === 'Shadowmourne') &&
+                              'solid 2px rgb(197 73 0)'
+                          }}
+                          src={items.class[i].img}
+                          alt={itemName}
+                          className='min-h-14 min-w-14 rounded-[5px] border-2 border-[#55008d]'
+                        />
+                      </a>
+                      <li className='w-full list-none truncate ml-2'>
+                        {itemName}
+                      </li>
+                      <h2 className='text-red-400'>{items.class[i].drop}</h2>
+                    </div>
+                    <div className='flex gap-2'>
+                      {items.class[i].class.map((classEle, j) => {
+                        const color = colorsClass.find((color) =>
+                          color.type?.includes(classEle)
+                        )
+                        console.log('color', color)
+
+                        return (
+                          <li
+                            key={j}
+                            className={`list-none text-xs md:text-base font-medium`}
+                            style={{ color: color ? color.color : '#FFFFFF' }}
+                          >
+                            {classEle}{' '}
+                            {items.class[i].class.length - 1 !== j && '|'}
+                          </li>
+                        )
+                      })}
+                    </div>
                   </div>
-                )
-              })}
-          </ul>
-          <ul className='items-class-container'>
-            {items &&
-              items.class.map((ele, i) => {
-                console.log(ele)
-                return (
-                  <div key={i} className='class-container'>
-                    {ele.class.map((classEle, j) => {
-                      return <li key={j}>{classEle}</li>
-                    })}
-                  </div>
-                )
-              })}
-          </ul>
-          <ul className='items-class-container'>
-            {items &&
-              items.class.map((ele, i) => {
-                console.log(ele)
-                return (
-                  <div key={i} className='loot-container'>
-                    {ele.drop}
-                  </div>
-                )
-              })}
-          </ul>
-          <div className='item-language'>
-            {language ? (
-              <button onClick={() => setLanguage(!language)}>English</button>
-            ) : (
-              <button onClick={() => setLanguage(!language)}>Spanish</button>
-            )}
+                ))}
+            </ul>
           </div>
         </>
       ) : (
-        <h1>Loading...</h1>
+        <h1 className='text-white text-2xl'>Loading...</h1>
       )}
     </div>
   )
