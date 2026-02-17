@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useRef, memo } from 'react'
+import { useCallback, useEffect, useRef, memo, useState } from 'react'
 import { selectColor } from '../DkpsTable.service'
 import { itemsLeft, itemsBottom, itemsRight } from './RowTables.service'
 import { usePlayerInfo } from './usePlayerInfo'
 import './RowPlayer.css'
 
 const PlayerModal = ({ player, alters, onClose }) => {
+  const [percent, setPercent] = useState(0)
   const modalRef = useRef(null)
   const {
     scanning,
@@ -14,6 +15,15 @@ const PlayerModal = ({ player, alters, onClose }) => {
     fetchPlayerInfo,
     getItemData
   } = usePlayerInfo()
+
+  useEffect(() => {
+    if (percent < 100) {
+      const interval = setInterval(() => {
+        setPercent((prev) => (prev < 100 ? prev + 2 : 0))
+      }, 500)
+      return () => clearInterval(interval)
+    }
+  }, [percent])
 
   // Fetch initial player data
   useEffect(() => {
@@ -44,6 +54,7 @@ const PlayerModal = ({ player, alters, onClose }) => {
   )
 
   const handleRetryFetch = useCallback(() => {
+    setPercent(0)
     if (playerName) {
       fetchPlayerInfo(playerName)
     }
@@ -77,6 +88,7 @@ const PlayerModal = ({ player, alters, onClose }) => {
                     : displayPlayerName}
                 </h1>
                 {scanning && <span className='scanning-horizontal'></span>}
+                {scanning && <span>{percent}%</span>}
               </div>
               {error ? (
                 <ErrorDisplay onRetry={handleRetryFetch} />
