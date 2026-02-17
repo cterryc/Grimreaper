@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 15px;
+  /* gap: 15px; */
 }
 
 .searchplayer-form {
@@ -15,7 +15,7 @@
   background: rgba(10, 12, 14, 0.8);
   border: 1px solid #c89b3c;
   border-radius: 30px;
-  overflow: hidden;
+  /* overflow: hidden; */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   transition: box-shadow 0.3s ease;
 }
@@ -225,9 +225,11 @@
   .searchplayer-form-container {
     flex-direction: column;
     align-items: stretch;
+    padding: 0px 10px;
   }
   .searchplayer-form {
     width: 100%;
+    border-radius: 20px 10px 10px 20px;
   }
   .searchplayer-form input {
     width: 100%;
