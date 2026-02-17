@@ -92,4 +92,5 @@ const RowPlayer = ({
   )
 }
 
-export default memo(RowPlayer)
+const MemoizedRowPlayer = memo(RowPlayer)
+export default MemoizedRowPlayer
