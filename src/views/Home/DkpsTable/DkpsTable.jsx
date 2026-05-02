@@ -22,7 +22,6 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp, onPlayerSelect }) => {
     setRenderData(mains)
     // }
     console.log(mains)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mains])
 
   useEffect(() => {
@@ -149,9 +148,9 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp, onPlayerSelect }) => {
         <div className='loader-container'>
           <span className='loader'></span>
         </div>
-      ) : (
+      ) : renderData?.length > 0 ? (
         <div className='all-players'>
-          {renderData?.map((ele, i) => {
+          {renderData.map((ele, i) => {
             return (
               <RowPlayer
                 state={alters}
@@ -165,6 +164,13 @@ const DkpsTable = ({ showAddDKP, setButtonShowAddDkp, onPlayerSelect }) => {
               />
             )
           })}
+        </div>
+      ) : (
+        <div className='no-data-placeholder'>
+          <p className='primary-text'>No se encontraron personajes</p>
+          <p className='secondary-text'>
+            La lista de campeones está actualmente vacía.
+          </p>
         </div>
       )}
     </div>

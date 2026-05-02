@@ -41,7 +41,6 @@ const ItemBis = () => {
         class: Object.values(valuesEnglish[slotSelected])
       })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slotSelected, language])
 
   const changeSlot = (i) => {
